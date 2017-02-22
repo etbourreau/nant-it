@@ -1,0 +1,79 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: rgba(61, 61, 61, 1);
+}
+
+.page{
+	width: 80%;
+	min-height: 69.8%;
+	margin: auto;
+	margin-bottom: -60px; 
+	padding-top: 180px;
+	background: #fffdef;
+	background-image: url("../img/page_bg.png");
+	padding-bottom:100px; //footer
+}
+
+.page #content{
+	padding: 0 10% 0 10%;
+}
+
+.page #content .row{
+	margin-bottom: 20px;
+	min-height: 20px;
+	text-align: center;
+}
+
+.page #content .row h1{
+	font-family: 'Cinzel', serif;
+	font-size: 45px;
+	text-decoration: underline;
+}
+
+.page #content .row h2{
+	font-family: 'Cinzel', serif;
+	font-size: 40px;
+}
+
+.page #content .row p{
+	font-family: 'Cinzel', serif;
+	font-size: 25px;
+}
+
+.page #content .row input[type="text"], .page #content .row input[type="email"], .page #content .row input[type="password"], .page #content .row textarea{
+	width: 75%;
+	font-family: Verdana;
+	font-size: 16px;
+	background-color: rgba(218, 218, 218, 1);
+	border-radius: 7px;
+	padding: 10px 20px 10px 20px;
+	resize:vertical;
+}
+
+.page #content .row input[type="text"]:focus, .page #content .row input[type="email"]:focus, .page #content .row input[type="password"]:focus, .page #content .row textarea:focus{
+	background-color: rgba(167, 167, 167, 1);
+	outline: none;
+}
+
+.page #content .row input[type="submit"], .page #content .row input[type="button"]{
+	margin: 1px 1px 1px 1px;
+	font-family: 'Cinzel', serif;
+	font-weight: bold;
+	font-size: 22px;
+	background-color: rgba(218, 218, 218, 1);
+	border-radius: 7px;
+	padding: 10px 20px 10px 20px;
+	resize:vertical;
+}
+
+.page #content .row input[type="submit"]:focus, .page #content .row input[type="button"]:focus{
+	background-color: rgba(167, 167, 167, 1);
+	outline: none;
+}
+
+.page #content .row input[type="submit"]:hover, .page #content .row input[type="button"]:hover{
+	margin: -1px -1px -1px -1px;
+	padding: 12px 22px 12px 22px;
+	cursor: pointer;
+}
