@@ -5,6 +5,10 @@ body{
 	min-height:100%;
 	background: rgba(61, 61, 61, 1);
 }
+h1, h2{
+	margin: 0;
+	padding: 0;
+}
 
 .bar{
 	width: 100%;
@@ -30,15 +34,17 @@ body{
 }
 
 .page #content .row{
-	margin-bottom: 20px;
+	margin: 30px 0 30px 0;
 	min-height: 20px;
 	text-align: center;
 }
 
 .page #content .row h1{
 	font-family: 'Cinzel', serif;
-	font-size: 45px;
+	font-size: 50px;
 	text-decoration: underline;
+	font-weight: none;
+	margin-top: 20px;
 }
 
 .page #content .row h2{
@@ -49,6 +55,7 @@ body{
 .page #content .row p{
 	font-family: 'Cinzel', serif;
 	font-size: 25px;
+	margin: 0;
 }
 
 .page #content .row input[type="text"], .page #content .row input[type="email"], .page #content .row input[type="password"], .page #content .row textarea{
@@ -86,4 +93,46 @@ body{
 	margin: -1px -1px -1px -1px;
 	padding: 12px 22px 12px 22px;
 	cursor: pointer;
+}
+
+.page #content .presbar{
+	margin-top: 20px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.page #content .presbar .line{
+	width: 80%;
+	height: 7px;
+	margin-left: 40px;
+	background: #6AB1C3;
+}
+
+.page #content .presstudies{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	font-family: 'Cinzel', serif;
+	font-weight: none;
+	font-size: 30px;
+}
+
+.page #content .presstudies .line{
+	width: 10%;
+	height: 15px;
+	border-radius: 6px;
+	margin-left: 25px;
+	margin-right: 40px;
+	background: #3D3D3D;
+}
+
+.page #content .space{
+	height: 85px;
 }
