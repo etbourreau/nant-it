@@ -1,4 +1,4 @@
-function getXHR() // création d'un objet qui récupère une valeur
+ï»¿function getXHR() // crÃ©ation d'un objet qui rÃ©cupÃ¨re une valeur
 {
     var xhr=null;
 
@@ -19,7 +19,7 @@ function getXHR() // création d'un objet qui récupère une valeur
 function loadPart(fileName, divId, id = null){
     var xhr = getXHR();
     xhr.open('POST',fileName,true); // true : asynchronisation
-    xhr.onreadystatechange = function(){ //fonction executée qd le statut change
+    xhr.onreadystatechange = function(){ //fonction executÃ©e qd le statut change
         if (xhr.readyState == 4){ //statut = 4 quand on a recu les donnees
             if (document.getElementById){
                 document.getElementById(divId).innerHTML = xhr.responseText;
@@ -31,20 +31,17 @@ function loadPart(fileName, divId, id = null){
     xhr.send(data);
 }
 
-function getTab(nb, max, file, div){
-	for(var i = 1; i < max+1; i++){
+function getTab(idTab, max, file, div){
+	for(var i = 0; i < max+1; i++){
 		if(document.getElementById("tab-"+i)){
 			document.getElementById("tab-"+i).className="";
-			console.log("reset tab "+i);
 		}
 	}
-	if(document.getElementById("tab-"+nb)){
-		console.log("set tab "+nb);
-		document.getElementById("tab-"+nb).className = "selected";
+	if(document.getElementById("tab-"+idTab)){
+		document.getElementById("tab-"+idTab).className = "selected";
 		loadPart(file, div);
 	}else{
-		console.log("tab "+nb+" not found, using accueil");
-		document.getElementById("tab-1").className = "selected";
+		document.getElementById("tab-0").className = "selected";
 		loadPart( 'templates/accueil.php', 'content');
 	}
 }

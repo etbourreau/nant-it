@@ -1,6 +1,5 @@
 		<?php
 			include('header.php');
-			include('traitement.php');
 		?>
 		<div class="page">
 			<div id="content">
