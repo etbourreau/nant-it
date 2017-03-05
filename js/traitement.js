@@ -9,7 +9,7 @@
         xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
     else{
-        alert("Votre navigateur ne supporte pas l'importation XMLHttpRequest");
+        alert("Votre navigateur n'est pas compatible avec la navigation de notre site !\nMerci d'utiliser un navigateur récent et à jour (exemples: Chrome, Opera, Firefox, Safari, Edge...).");
         return false;
     }
 
@@ -17,18 +17,31 @@
 }
 
 function loadPart(fileName, divId, id = null){
-    var xhr = getXHR();
-    xhr.open('POST',fileName,true); // true : asynchronisation
-    xhr.onreadystatechange = function(){ //fonction executée qd le statut change
-        if (xhr.readyState == 4){ //statut = 4 quand on a recu les donnees
-            if (document.getElementById){
-                document.getElementById(divId).innerHTML = xhr.responseText;
-            }
-        }
-    }
-    xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-	var data = 'id='+id;
-    xhr.send(data);
+	var xhr;
+	if(UrlExists(fileName)){
+		xhr = getXHR();
+		xhr.open('POST',fileName,true); // true : asynchronisation
+		xhr.onreadystatechange = function(){ //fonction executée qd le statut change
+			if (xhr.readyState == 4){ //statut = 4 quand on a recu les donnees
+				if (document.getElementById){
+					document.getElementById(divId).innerHTML = xhr.responseText;
+				}
+			}
+		}
+		xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		var data = 'id='+id;
+		xhr.send(data);
+	}else{
+		loadPart("templates/404.php", divId, '');
+	}
+}
+
+function UrlExists(url)
+{
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status!=404;
 }
 
 function getTab(idTab, max, file, div){
