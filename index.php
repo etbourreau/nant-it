@@ -7,6 +7,7 @@
 					loadPart('templates/accueil.php', 'content');
 				</script>
 			</div>
+			<?php include('templates/pagefooter.php'); ?>
 		</div>
 		<?php
 		include('footer.php');

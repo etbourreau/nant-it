@@ -4,7 +4,7 @@
 	left: 0;
 	right: 0;
 	width: 100%;
-	height: 170px;
+	height: 140px;
 	background-image: url("../img/header/header_bg.png");
 	background-color: #76C4D7;
 	font-size: 20px;
@@ -25,14 +25,13 @@
 
 .header .row .logo{
 	width: 25%;
-	padding: 10px 0 0 10px;
+	padding: 20px 0;
 	text-align: center;
 }
 
 .header .row .logo img{
-	width: 100%;
-	max-width: 200px;
-	height: auto;
+	max-height: 70px;
+	width: auto;
 }
 
 .header .row .tabs{
@@ -49,17 +48,14 @@
 
 .header .row .tabs li{
 	border: 1px solid red;
-	margin-right: 20px;
-	margin-top: 10px;
+	margin: 1px 10px 1px 10px;
 	padding: 10px 15px 10px 15px;
 	border: 0;
 }
 
 .header .row .tabs li.selected{
 	border: 1px gray solid;
-	margin-top: 9px;
-	margin-left: -1px;
-	margin-right: 19px;
+	margin: 0 9px 0 9px;
 	border-radius: 15px;
 	background: rgba(100, 100, 100, 0.5);
 	color: white;
@@ -67,9 +63,7 @@
 
 .header .row .tabs li:hover{
 	border: 1px gray solid;
-	margin-top: 9px;
-	margin-left: -1px;
-	margin-right: 19px;
+	margin: 0 9px 0 9px;
 	border-radius: 15px;
 	background: rgba(70, 70, 70, 0.1);
 	cursor: pointer;
@@ -77,9 +71,6 @@
 
 .header .row .tabs li:hover.selected{
 	border: 1px gray solid;
-	margin-top: 9px;
-	margin-left: -1px;
-	margin-right: 19px;
 	border-radius: 15px;
 	background: rgba(100, 100, 100, 0.5);
 	color: white;
@@ -93,5 +84,6 @@
 .header .row .desc{
 	width: 100%;
 	text-align: center;
-	font-size: 40px;
+	font-size: 35px;
+	margin-bottom: 20px;
 }

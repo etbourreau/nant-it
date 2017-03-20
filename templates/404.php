@@ -1,5 +1,5 @@
 <div class="row">
-	<img src="./img/maintenance.png" alt="Maintenance" title="Maintenance"/>
+	<img src="./img/maintenance.png" alt="Maintenance" title="Maintenance" style="max-width: 80%;"/>
 </div>
 
 <div class="row">

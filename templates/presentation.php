@@ -37,7 +37,7 @@
 </div>
 
 <div class="row">
-	<p>Nous nous appelons Etienne, Khennett et Benjamin. Notre moyenne d'âge est de 20 ans et nous sommes situés sur Nantes et Lyon. Nous travaillons ensemble depuis quelques années déjà et ce projet a pour but de développer noter expérience personnelle et professionnelle.</p>
+	<p>Notre moyenne d'âge est de 20 ans et nous sommes situés sur Nantes et Lyon. Nous travaillons ensemble depuis quelques années déjà et ce projet a pour but de développer notre expérience personnelle et professionnelle.</p>
 </div>
 
 <div class="space"></div>

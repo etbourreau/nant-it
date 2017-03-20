@@ -22,8 +22,8 @@ function init(){
 	);
 	$tabs[] = array(
 		'id' => 2,
-		'title' => 'Gallerie',
-		'file' => $GLOBALS['templates'].'gallerie.php'
+		'title' => 'Galerie',
+		'file' => $GLOBALS['templates'].'galerie.php'
 	);
 	$tabs[] = array(
 		'id' => 3,
