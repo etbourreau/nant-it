@@ -1,3 +1,6 @@
+<?php
+
+?>
 <div class="row">
 	<h1>Galerie</h1>
 </div>

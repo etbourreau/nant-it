@@ -1,6 +1,6 @@
 ﻿<?php
 function getConnection(){
-	return mysqli_connect("localhost", "root", "", "nantit");
+	return mysqli_connect("5.135.240.8", "root", "raslebol1967", "nantit");
 }
 
 function init(){
