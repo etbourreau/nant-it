@@ -1,3 +1,4 @@
+import './menu.css'
 import ControleurMenu from './menu.controller'
 import TemplateMenu from './menu.html'
 

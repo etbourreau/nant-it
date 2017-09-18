@@ -1,21 +1,23 @@
-export default class ControleurConnexion{
-    constructor($location, serviceSession){
+export default class ControleurConnexion {
+    constructor($location, serviceSession, serviceMenu) {
         this.location = $location
         this.session = serviceSession
+        this.menu = serviceMenu
     }
-    
-    tryConnecter(email, pwd){
-            this.error = false
-            this.errorEmpty = false
-        if(!email || !pwd){
+
+    tryConnecter(email, pwd) {
+        this.error = false
+        this.errorEmpty = false
+        if (!email || !pwd) {
             this.errorEmpty = true
-        }else{
-            if(this.session.connecter(email, pwd)){
+        } else {
+            if (this.session.connecter(email, pwd)) {
+                this.menu.showPageContenu(false)
                 this.location.path('/')
-            }else{
+            } else {
                 this.error = true
             }
         }
-        
+
     }
 }

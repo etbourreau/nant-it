@@ -1,9 +1,77 @@
-<nav>
-    <div>
-      <ul>
-        <li><a ng-click="$ctrl.rediriger('home')">
-                <span class="glyphicon glyphicon-home"></span> Accueil</a></li>
-      </ul>
+<div class="row" style="margin: 0">
+    <div class="col-xs-2 logo">
+        <img class="img-responsive"
+             src="/assets/logo.png"
+             alt="Nant'IT"
+             title="Nant'IT"
+             ng-click="$ctrl.rediriger('accueil')"/>
     </div>
-</nav>
+    <nav id="menu" class="col-xs-8">
+        <div>
+            <ul>
+                <li>
+                    <a ng-click="$ctrl.rediriger('accueil')">
+                        Accueil
+                    </a>
+                </li>
+                <li id="btn-presentation">
+                    <a ng-click="$ctrl.rediriger('presentation')">
+                        Présentation
+                    </a>
+                </li>
+                <li id="btn-galerie">
+                    <a ng-click="$ctrl.rediriger('galerie')">
+                        Galerie
+                    </a>
+                </li>
+                <li id="btn-equipe">
+                    <a ng-click="$ctrl.rediriger('equipe')">
+                        Notre Équipe
+                    </a>
+                </li>
+                <li id="btn-services">
+                    <a ng-click="$ctrl.rediriger('services')">
+                        Nos Services
+                    </a>
+                </li>
+                <li id="btn-contact">
+                    <a ng-click="$ctrl.rediriger('contact')">
+                        Contact
+                    </a>
+                </li>
 
+                <!-- CONNECTÉ -->
+                <li uib-dropdown ng-if="$ctrl.isConnecte()" id="btn-gestion">
+                    <a href id="connecte-dropdown" uib-dropdown-toggle>
+                        Gestion
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="connecte-dropdown">
+                        <li>
+                            <a ng-click="$ctrl.rediriger('gestionProfile')">
+                                Mon Profil
+                            </a>
+                        </li>
+                        <li ng-if="$ctrl.isAdmin()">
+                            <a ng-click="$ctrl.rediriger('gestionGalerie')">
+                                Galerie
+                            </a>
+                        </li>
+                        <li ng-if="$ctrl.isAdmin()">
+                            <a ng-click="$ctrl.rediriger('gestionMembres')">
+                                Membres
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="$ctrl.deconnecter()">
+                                Déconnexion
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="clock col-xs-2">
+        <p5 sketch="mySketch"></p5>
+    </div>
+</div>

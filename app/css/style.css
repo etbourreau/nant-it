@@ -17,18 +17,27 @@ div#pageContenu{
     padding: 25px 40px 25px 40px;
     
     text-align: center;
-    font-size: 20px;
+    font-size: 19px;
     color: white;
     text-shadow: 
         -1px -1px 0px #000,
         -1px 1px 0px #000,
         1px -1px 0px #000,
         1px 1px 0px #000;
+    
+    transition: opacity 1s ease-in-out;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 div#pageContenu .alert{
-    
     text-align: center;
     font-size: 17px;
     text-shadow: none;
+}
+
+div#pageContenu p{
+    text-align: justify;
 }

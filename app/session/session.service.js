@@ -1,8 +1,9 @@
 export default class ServiceSession{
-        constructor($http, jssha, $location, serviceUtilisateur){
+        constructor($http, jssha, $location, serviceUtilisateur, serviceMenu){
             this.http = $http
             this.encrypt = jssha
             this.utilisateurs = serviceUtilisateur
+            this.menu = serviceMenu
             this.location = $location
         }
         
@@ -24,15 +25,20 @@ export default class ServiceSession{
         }
         
         isAdmin(){
-            return this.isConnecte() && this.utilisateurs.findUtilisateurParId(this.get()).grade == 'Administrateur'
+            return this.isConnecte()
+                    && this.utilisateurs.findUtilisateurParId(this.getId())
+                    && this.utilisateurs.findUtilisateurParId(this.getId()).grade == '0'
         }
         
         deconnecter(){
             sessionStorage.clear()
-            this.location.path('/')
+            if(this.location.path().includes('admin')){
+                this.menu.showPageContenu(false)
+                this.location.path('/')
+            }
         }
         
-        get(){
+        getId(){
             return sessionStorage.getItem('id')
         }
 }

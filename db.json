@@ -7,7 +7,13 @@
             "email": "etienne.bourreau@nant-it.fr",
             "pwd": "ebb03465cf5fccfd8f6fb0b5494dac0a009aad4777e3cbdd8bc3a804e412d1c710a8a295bbed5ea2360372dd6baa67bf",
             "image": "etienne-bourreau.jpg",
-            "grade": "Administrateur"
+            "grade": "0"
+        }
+    ],
+    "grades": [
+        {
+            "id": "0",
+            "libelle": "Administrateur"
         }
     ]
 }

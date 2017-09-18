@@ -1,0 +1,58 @@
+div.logo{
+    text-align: center;
+}
+
+div.logo img:hover{
+    cursor: pointer;
+}
+
+nav#menu{
+    transition: margin-top 1s;
+}
+
+nav > div > ul{
+    list-style: none;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav > div > ul > li{
+    padding: 10px 15px 10px 15px;
+    font-size: 22px;
+    text-shadow:
+        -1px -1px 0px #333,
+        -1px 1px 0px #333,
+        1px -1px 0px #333,
+        1px 1px 0px #333;
+}
+
+nav > div > ul > li a{
+    color: #AAF;
+}
+
+nav > div > ul > li a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav > div > ul > li ul a{
+    color: black;
+    text-shadow: none;
+}
+
+@media (max-width: 768px) {
+    div.clock {
+        display: none;
+    }
+    
+    nav#menu{
+        width: 83.333333333%;
+    }
+    
+    nav > div > ul > li{
+        font-size: 16px;
+    }
+}
