@@ -1,9 +1,9 @@
-import menuCtrl from './menu.controller'
-import menuTpl from './menu.html'
+import ControleurMenu from './menu.controller'
+import TemplateMenu from './menu.html'
 
-const menuComponent = {
-    template: menuTpl,
-    controller: menuCtrl
+const ComposantMenu = {
+    template: TemplateMenu,
+    controller: ControleurMenu
 };
 
-export default menuComponent;
+export default ComposantMenu;

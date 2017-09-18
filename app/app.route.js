@@ -3,8 +3,9 @@ export function route ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
     $routeProvider
-    .when('/', {
-        template: '<menu-component></menu-component>'
+    .when('/', {})
+    .when('/connexion', {
+        template: '<composant-connexion></composant-connexion>'
     })
     .otherwise({
         redirectTo: '/'

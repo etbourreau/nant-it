@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const API_URL = process.env.NODE_ENV === 'production'
-	? 'https://api-absences.cleverapps.io' : 'http://localhost:8080';
+	? 'servDbProd' : 'http://localhost:3000';
 const publicPath = process.env.NODE_ENV === 'production' ? ''
 	: '/';
 
