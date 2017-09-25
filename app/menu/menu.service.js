@@ -5,19 +5,19 @@ export default class ServiceMenu {
             logo: {
                 maxWidth: {
                     min: '15%',
-                    max: '50%'
+                    max: '80%'
                 },
                 marginLeft: {
                     min: '0px',
-                    max: '25%',
-                    temps: 250
+                    max: '10%',
+                    temps: 150
                 }
             },
             nav : {
                 marginTop: {
                     min : '0px',
-                    max: '35vh',
-                    temps: 500
+                    max: '30vw',
+                    temps: 350
                 }
             },
             page : {
@@ -43,17 +43,33 @@ export default class ServiceMenu {
         return this.limites.logo.marginLeft.temps + this.limites.nav.marginTop.temps + this.limites.page.transform.temps
     }
     
+    setLogo(type){
+        if(type == 'horizontal'){
+            document.getElementById('logo-'+type).style.opacity = 1
+            document.getElementById('logo-vertical').style.opacity = 0
+        }
+        if(type == 'vertical'){
+            document.getElementById('logo-'+type).style.opacity = 1
+            document.getElementById('logo-horizontal').style.opacity = 0
+        }
+    }
+    
     setTransitions(state){
+        document.getElementById('logo-horizontal').style.transition =
+            (state)? 'opacity ' + this.limites.logo.marginLeft.temps + 'ms ease-in-out' : 'unset'
+        document.getElementById('logo-vertical').style.transition =
+            (state)? 'opacity ' + this.limites.logo.marginLeft.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('logo').style.transition =
-            (state)? 'max-width ' + this.limites.nav.marginTop.temps + 'ms ease-out,'+
-            'margin-left ' + this.limites.nav.marginTop.temps + 'ms' : 'unset'
+            (state)? 'max-width ' + this.limites.nav.marginTop.temps + 'ms ease-in-out,'+
+            'margin-left ' + this.limites.nav.marginTop.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('menu').style.transition =
-            (state)? 'margin-top ' + this.limites.nav.marginTop.temps + 'ms' : 'unset'
+            (state)? 'margin-top ' + this.limites.nav.marginTop.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('pageContenu').style.transition =
-            (state)? 'transform ' + this.limites.page.transform.temps + 'ms ease' : 'unset'
+            (state)? 'transform ' + this.limites.page.transform.temps + 'ms ease-in-out' : 'unset'
     }
 
     setPageContenu(state) {
+        this.setLogo((state)? 'vertical': 'horizontal')
         document.getElementById('logo').style.maxWidth =
             (state) ? this.limites.logo.maxWidth.min : this.limites.logo.maxWidth.max
         document.getElementById('logo').style.marginLeft =
@@ -72,7 +88,8 @@ export default class ServiceMenu {
             document.getElementById('logo').style.marginLeft = this.limites.logo.marginLeft.min
             document.getElementById('logo').style.maxWidth = this.limites.logo.maxWidth.min
             this.timeout(() => {
-                //changer logo -> vertical TODO
+                //changer logo -> vertical
+                this.setLogo('vertical')
                 //monter menu
                 document.getElementById('menu').style.marginTop = this.limites.nav.marginTop.min
                 this.timeout(() =>
@@ -94,6 +111,7 @@ export default class ServiceMenu {
                 document.getElementById('menu').style.marginTop = this.limites.nav.marginTop.max
                 this.timeout(() => {
                     //changer logo -> horizontal TODO
+                    this.setLogo('horizontal')
                     //agrandir logo
                     document.getElementById('logo').style.maxWidth = this.limites.logo.maxWidth.max
                     document.getElementById('logo').style.marginLeft = this.limites.logo.marginLeft.max
