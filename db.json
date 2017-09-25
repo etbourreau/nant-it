@@ -1,19 +1,65 @@
 {
-    "utilisateurs": [
-        {
-            "id": "1",
-            "nom": "Bourreau",
-            "prenom": "Etienne",
-            "email": "etienne.bourreau@nant-it.fr",
-            "pwd": "ebb03465cf5fccfd8f6fb0b5494dac0a009aad4777e3cbdd8bc3a804e412d1c710a8a295bbed5ea2360372dd6baa67bf",
-            "image": "etienne-bourreau.jpg",
-            "grade": "0"
-        }
-    ],
-    "grades": [
-        {
-            "id": "0",
-            "libelle": "Administrateur"
-        }
-    ]
+  "utilisateurs": [
+    {
+      "id": "1",
+      "nom": "Bourreau",
+      "prenom": "Etienne",
+      "email": "etienne.bourreau@nant-it.fr",
+      "pwd": "ebb03465cf5fccfd8f6fb0b5494dac0a009aad4777e3cbdd8bc3a804e412d1c710a8a295bbed5ea2360372dd6baa67bf",
+      "image": "etienne-bourreau.jpg",
+      "grade": "0",
+      "description": "Développeur Full-Stack",
+      "competences": "Java;JavaScript;Python;C#;PHP;HTML;CSS;Java EE; Spring;AngularJS;Bootstrap"
+    },
+    {
+      "grade": "0",
+      "nom": "Ducoin",
+      "prenom": "Benjamin",
+      "description": "Administrateur Réseau et Logistique",
+      "image": "benjamin-ducoin.jpg",
+      "email": "benjamin.ducoin@nant-it.fr",
+      "competences": "",
+      "id": 2,
+      "pwd": "2bfac1a5b2fe06448dc65743cb8762db94e5cde7f64d3438f2004b1083a7c18ae6e5536c65f013c6ce45632e0dfa3c58"
+    },
+    {
+      "grade": "2",
+      "nom": "Busont",
+      "prenom": "Célia",
+      "description": "Chargée de communication",
+      "competences": "Indesign;Photoshop;Illustrator;Marketing",
+      "image": "célia-busont.jpg",
+      "email": "célia.busont@nant-it.fr",
+      "id": 3,
+      "pwd": "2bfac1a5b2fe06448dc65743cb8762db94e5cde7f64d3438f2004b1083a7c18ae6e5536c65f013c6ce45632e0dfa3c58"
+    }
+  ],
+  "grades": [
+    {
+      "id": "0",
+      "priorite": "0",
+      "libelle": "Administrateur"
+    },
+    {
+      "id": "1",
+      "priorite": "5",
+      "libelle": "Développeur"
+    },
+    {
+      "id": "2",
+      "priorite": "5",
+      "libelle": "Designeur"
+    },
+    {
+      "id": "3",
+      "priorite": "3",
+      "libelle": "Commercial"
+    },
+    {
+      "id": "4",
+      "priorite": "100",
+      "libelle": "Préposé au café"
+    }
+  ],
+  "galerie": []
 }

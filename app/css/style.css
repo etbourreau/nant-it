@@ -3,14 +3,16 @@ body {
     padding: 0;
     background-image: url('/assets/background.jpg');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center bottom;
     background-attachment: fixed;
+    background-size: auto 100%;
     
     font-family: Rockwell, sans-serif;
 }
 
 div#pageContenu{
     margin-top: 40px;
+    margin-bottom: 10%;
     background-color: rgba(255, 255, 255, 0.25);
     border-radius: 6px;
     
@@ -25,11 +27,11 @@ div#pageContenu{
         1px -1px 0px #000,
         1px 1px 0px #000;
     
-    transition: opacity 1s ease-in-out;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+    transform-origin: center center;
 }
 
 div#pageContenu .alert{
@@ -40,4 +42,10 @@ div#pageContenu .alert{
 
 div#pageContenu p{
     text-align: justify;
+}
+
+@media (max-width: 768px) {
+    div#pageContenu{
+        font-size: 14px;
+    }
 }

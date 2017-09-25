@@ -5,38 +5,61 @@ export default class MenuCtrl {
         this.location = $location
         this.service = serviceMenu
         this.session = serviceSession
-        if(this.location.path() != '/'){
+        if (this.location.path() != '/') {
             let lienValide = false
-            for(let k in this.frontUrls){
-                if(this.frontUrls[k]!= '/'
-                        && this.location.path()
-                            .includes(this.frontUrls[k])){
+            for (let k in this.frontUrls) {
+                if (this.frontUrls[k] != '/'
+                    && this.location.path()
+                    .includes(this.frontUrls[k])) {
                     lienValide = true
+                    this.service.setBtnActive(k)
                 }
             }
             this.service.setPageContenu(lienValide)
-        }else{
+        } else {
             this.service.setPageContenu(false)
         }
         
-        
+        this.timeout(() => {
+            if(this.location.path() == '/'
+                && document.getElementById('pageContenu').style.transform == 'scale(1, 1)'){
+                this.service.setTransitions(false)
+                this.service.setPageContenu(false)
+                this.timeout(() => {
+                    this.service.setTransitions(true)
+                }, 1)
+                
+            }
+        }, 1)
+
     }
 
     rediriger(page) {
-        if (page == 'accueil' && document.getElementById('pageContenu').style.opacity == '1') {
-            this.service.showPageContenu(false)
-            this.timeout(() => {
+        if (!this.mouvement) {
+            this.mouvement = true
+
+            if (page == 'accueil' && document.getElementById(
+                'pageContenu').style.minHeight == this.service.limites.page.minHeight.max) {
+                this.service.showPageContenu(false)
+                this.timeout(() =>
+                    {
+                        this.location.path(this.frontUrls[page])
+                        this.mouvement = false
+                    }, this.service.tempsTransition)
+            } else if (page != 'accueil'
+                && document.getElementById('pageContenu').style.minHeight == this.service.limites.page.minHeight.min) {
                 this.location.path(this.frontUrls[page])
-            }, 1000)
-        }else if(page != 'accueil' && document.getElementById('pageContenu').style.opacity == '0'){
-            this.service.showPageContenu(true)
-            this.timeout(() => {
+                this.service.showPageContenu(true)
+                this.timeout(() =>
+                    {
+                        this.mouvement = false
+                    }, this.service.tempsTransition)
+            } else {
                 this.location.path(this.frontUrls[page])
-            }, 2000)
-        }else{
-            this.location.path(this.frontUrls[page])
+                this.mouvement = false
+            }
+            this.service.setBtnActive(page)
         }
-        this.service.setBtnActive(page)
     }
 
     isConnecte() {

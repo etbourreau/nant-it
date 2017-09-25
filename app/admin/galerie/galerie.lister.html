@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="text-right">
+            <span class="btn btn-primary glyphicon glyphicon-plus"
+                ng-click="$ctrl.ajouter()"></span>
+    </div>
+</div>
+<br>
+<div class="col-xs-10 col-xs-offset-1 alert alert-danger" ng-show="$ctrl.errorSuppression">
+    L'élément n'a pas pu être supprimé !
+</div>
+<div class="row">
+    <table class="table table-bordered" ng-if="$ctrl.items.length > 0">
+        <thead>
+            <tr>
+                <td>Titre</td>
+                <td>Lien</td>
+                <td>Description</td>
+                <td>Image</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in $ctrl.items | orderBy:'date':true">
+                <td>{{item.titre}}</td>
+                <td><a href="{{item.lien}}" target="_blank" class="btn btn-info">Voir</a></td>
+                <td>{{item.description}}</td>
+                <td><img
+                        class="img-responsive"
+                        ng-src="/assets/galerie/{{item.image}}"
+                        err-src="/assets/galerie/default.jpg"
+                        alt="{{item.titre}}"
+                        title="{{item.titre}}"/></td>
+                <td>
+                    <div class="row">
+                        <div>
+                            <span class="blue glyphicon glyphicon-pencil"
+                                  ng-click="$ctrl.modifier(item.id)"></span>
+                        </div>
+                        <div>
+                            <span class="red glyphicon glyphicon-remove"
+                                  ng-click="$ctrl.supprimer(item.id)"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-xs-10 col-xs-offset-1 alert alert-info" ng-if="$ctrl.items.length === 0">
+        Il n'y a pas encore d'élément !
+    </div>
+</div>

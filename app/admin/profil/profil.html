@@ -1,0 +1,126 @@
+<form class="form-horizontal">
+    <fieldset>
+
+        <legend>Mes Informations</legend>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Nom</label>  
+            <div class="col-sm-7">
+                <input ng-value="$ctrl.utilisateur.nom" type="text" class="form-control input-md" disabled>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Prénom</label>  
+            <div class="col-sm-7">
+                <input ng-value="$ctrl.utilisateur.prenom" type="text" class="form-control input-md" disabled>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Email</label>  
+            <div class="col-sm-7">
+                <input ng-value="$ctrl.utilisateur.email" type="text" class="form-control input-md" disabled>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Grade</label>  
+            <div class="col-sm-7">
+                <input ng-value="$ctrl.utilisateur.grade" type="text" class="form-control input-md" disabled>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Description</label>
+            <div class="col-sm-7">                     
+                <textarea class="form-control" ng-model="$ctrl.utilisateur.description"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Compétences</label>
+            <div class="col-sm-7">                     
+                <textarea class="form-control" ng-model="$ctrl.utilisateur.competences"></textarea>
+                <span class="help-block">Séparez les compétences par des points-virgules (;)</span>
+            </div>
+        </div>
+        
+        <div class="col-xs-10 col-xs-offset-1 alert alert-danger"
+             ng-show="$ctrl.errorFormInformations
+                    || $ctrl.errorFormInformationsUtilisateurInconnu
+                    || $ctrl.errorFormInformationsModifier">
+              <span ng-show="$ctrl.errorFormInformations">Merci de saisir une description</span>
+              <span ng-show="$ctrl.errorFormInformationsUtilisateurInconnu">Utilisateur invalide, merci de vous reconnecter</span>
+              <span ng-show="$ctrl.errorFormInformationsModifier">Vos informations n'ont pas pu être enregistrées !</span>
+        </div>
+        
+        <div class="col-xs-10 col-xs-offset-1 alert alert-success"
+             ng-show="$ctrl.successFormInformations">
+              Vos informations ont été modifiées !
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-11 text-right">
+                <button class="btn btn-success" ng-click="$ctrl.modifierInformations()">Enregistrer</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+<form class="form-horizontal">
+    <fieldset>
+
+        <legend>Modifier mon mot de passe</legend>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Mot de passe actuel</label>
+            <div class="col-sm-7">
+                <input ng-model="$ctrl.pwdActuel" type="password" placeholder="Votre mot de passe actuel" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Nouveau mot de passe</label>
+            <div class="col-sm-7">
+                <input ng-model="$ctrl.pwdNouveau" type="password" placeholder="Votre nouveau mot de passe" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Confirmation</label>
+            <div class="col-sm-7">
+                <input ng-model="$ctrl.pwdConfirmation" type="password" placeholder="Confirmation du mot de passe" class="form-control input-md">
+            </div>
+        </div>
+        
+        <div class="col-xs-10 col-xs-offset-1 alert alert-danger"
+             ng-show="$ctrl.errorPwd">
+              <span ng-show="$ctrl.errorPwdActualEmpty">Merci de saisir votre mot de passe actuel</span>
+              <span ng-show="$ctrl.errorPwdActuelInvalide">Votre mot de passe actuel ne correspond pas !</span>
+              <span ng-show="$ctrl.errorPwdNouveauEmpty">Merci de saisir un nouveau mot de passe</span>
+              <span ng-show="$ctrl.errorPwdNouveauCourt">Votre nouveau mot de passe doit faire au moins 5 caractères !</span>
+              <span ng-show="$ctrl.errorPwdConfirmationEmpty">Merci de confirmer votre nouveau mot de passe</span>
+              <span ng-show="$ctrl.errorPwdConfirmationDifferent">Les mot de passes ne correspondent pas !</span>
+              <span ng-show="$ctrl.errorPwdUtilisateurInvalide">Utilisateur invalide, merci de vous reconnecter</span>
+        </div>
+        
+        <div class="col-xs-10 col-xs-offset-1 alert alert-success"
+             ng-show="$ctrl.successPwd">
+              Votre mot de passe a été modifié !
+        </div>
+        
+        <div class="form-group">
+            <div class="col-xs-11 text-right">
+                <button class="btn btn-success" ng-click="$ctrl.modifierMotDePasse()" ng-disabled="$ctrl.disablePwdButton">Changer de mot de passe</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

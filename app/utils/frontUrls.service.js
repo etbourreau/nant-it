@@ -7,9 +7,9 @@ const frontUrls = {
     contact: '/contact',
     
     connexion: '/connexion',
-    gestionProfil: '/admin/profil',
-    gestionGlerie: '/admin/galerie',
-    gestionMembres: '/admin/membres'
+    gestionProfil: '/admin-profil',
+    gestionGalerie: '/admin-galerie',
+    gestionMembres: '/admin-membres'
 }
 
 export default frontUrls

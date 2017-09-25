@@ -1,7 +1,9 @@
 export default class ServiceUtilisateur {
-    constructor($http, apiUrls) {
+    constructor($http, jssha, apiUrls) {
         this.http = $http
+        this.encrypt = jssha
         this.url = apiUrls.utilisateur
+        this.defaultPassword = 'nant-it'
         this.utilisateurs = [
         ]
         this.refresh()
@@ -14,41 +16,45 @@ export default class ServiceUtilisateur {
                     if (result.data) {
                         this.utilisateurs = result.data
                     } else {
-                        console.log('serviceUtilisateur-refresh',
+                        console.log('ServiceUtilisateur-refresh:',
                             'aucune donnée récupérée')
                     }
+                    return true
                 }, () =>
                 {
-                    console.log('serviceUtilisateur-refresh',
+                    console.log('ServiceUtilisateur-refresh:',
                         'connexion au serveur échouée')
+                        
+                    return false
                 })
     }
 
     findAll() {
-        return this.utilisateurs
+        return JSON.parse(JSON.stringify(this.utilisateurs))
     }
 
     findUtilisateurParId(id) {
-        return this.utilisateurs.find(u =>
-            u.id == id)
+        let utilisateur = this.utilisateurs.find(u => u.id == id)
+        return (utilisateur)?JSON.parse(JSON.stringify(utilisateur)):null
     }
 
     findUtilisateurParEmailEtPwd(email, pwd) {
-        return this.utilisateurs.find(u =>
+        let utilisateur = this.utilisateurs.find(u =>
             u.email == email
                 && u.pwd == pwd
         )
+        return (utilisateur)?JSON.parse(JSON.stringify(utilisateur)):null
     }
 
     findIdSuivant() {
         let id = 0
-        this.utilisateur.forEach(u =>
+        this.utilisateurs.forEach(u =>
             {
                 if (u.id > id) {
                     id = u.id
                 }
             })
-        return (id + 1)
+        return (parseInt(id) + 1)
     }
 
     saveUtilisateur(utilisateur) {
@@ -58,18 +64,27 @@ export default class ServiceUtilisateur {
                 for (let k in utilisateur) {
                     u[k] = utilisateur[k]
                 }
-                return this.http.put(this.url, u)
+                return this.http.put(this.url+'/'+u.id, u)
             } else {
-                return new Promis(resolve =>
+                return new Promise(resolve =>
                     resolve({
                         error: true,
-                        message: 'ServiceUtilisateur-save utilisateur n\'a pas pu être modifié (introuvable)'
+                        message: 'ServiceUtilisateur-save: utilisateur n\'a pas pu être modifié (introuvable)'
                     }))
             }
         } else { //CREATE
-            utilisateur.id = this.findIdMax()
+            utilisateur.id = this.findIdSuivant()
+            
+            let pwdObj = new this.encrypt('SHA-384', 'TEXT')
+            pwdObj.update(this.defaultPassword)
+            utilisateur.pwd = pwdObj.getHash('HEX')
+            
             return this.http.post(this.url, utilisateur)
         }
         this.refresh()
+    }
+    
+    supprimerUtilisateur(id){
+        return this.http.delete(this.url+'/'+id)
     }
 }

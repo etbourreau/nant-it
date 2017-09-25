@@ -7,4 +7,4 @@ const ComposantMenu = {
     controller: ControleurMenu
 };
 
-export default ComposantMenu;
+export default ComposantMenu

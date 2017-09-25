@@ -1,0 +1,25 @@
+div#pageContenu td span.glyphicon{
+    min-width: 50px;
+}
+
+div#pageContenu span.blue{
+    color: #44F;
+}
+
+div#pageContenu span.red{
+    color: #F44;
+}
+
+div#pageContenu span:hover{
+    cursor: pointer;
+}
+
+div#pageContenu table{
+    text-shadow: none;
+    color: black;
+    background-color: white;
+}
+
+div#pageContenu table img{
+    max-height: 10%;
+}
