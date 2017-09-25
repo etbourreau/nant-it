@@ -45,7 +45,7 @@ export default class MenuCtrl {
                     {
                         this.location.path(this.frontUrls[page])
                         this.mouvement = false
-                    }, this.service.tempsTransition)
+                    }, this.service.getTempsTransition())
             } else if (page != 'accueil'
                 && document.getElementById('pageContenu').style.minHeight == this.service.limites.page.minHeight.min) {
                 this.location.path(this.frontUrls[page])
@@ -53,7 +53,7 @@ export default class MenuCtrl {
                 this.timeout(() =>
                     {
                         this.mouvement = false
-                    }, this.service.tempsTransition)
+                    }, this.service.getTempsTransition())
             } else {
                 this.location.path(this.frontUrls[page])
                 this.mouvement = false
