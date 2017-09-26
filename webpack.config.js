@@ -3,7 +3,7 @@ const path = require('path');
 
 const API_URL = process.env.NODE_ENV === 'production'
 	? 'http://5.135.240.8:3000' : 'http://localhost:3000';
-const publicPath = process.env.NODE_ENV === 'production' ? ''
+const publicPath = process.env.NODE_ENV === 'production' ? '/'
 	: '/';
 
 const output = 'dist';
@@ -20,7 +20,7 @@ module.exports = {
 		contentBase: path.join(__dirname, output),
 		compress: true,
 		host: '5.135.240.8',
-		port: 9000,
+		port: 80,
 		historyApiFallback: true
 	},
 
