@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const API_URL = process.env.NODE_ENV === 'production'
-	? 'servDbProd' : 'http://localhost:3000';
+	? 'http://5.135.240.8:3000' : 'http://localhost:3000';
 const publicPath = process.env.NODE_ENV === 'production' ? ''
 	: '/';
 
