@@ -1,0 +1,48 @@
+div.galerieItem{
+    margin-top: 15px;
+    padding: 0;
+}
+
+div.galerieItem a{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.galerieItem a:hover{
+    border: 1px solid #555;
+    border-radius: 6px;
+    margin: -1px;
+    text-decoration: none;
+    
+    transition: background 500ms ease;
+    background: -webkit-radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
+    background: -o-radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
+    background: -moz-radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
+    background: radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
+}
+
+div.galerieItem a:focus{
+    text-decoration: none;
+}
+
+div.galerieItem a div.txt, div.galerieItem a div.img{
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #FFF;
+}
+
+div.galerieItem a div.txt{
+    text-align: justify;
+}
+
+div.galerieItem a div.txt div.titre{
+    width: 100%;
+    font-size: 25px;
+    color: #DDD;
+}
+
+div.galerieItem a div.txt div.description{
+}
