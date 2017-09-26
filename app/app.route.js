@@ -7,10 +7,13 @@ export function route($routeProvider, $locationProvider) {
         .when('/presentation', {
             template: '<composant-presentation></composant-presentation>'
         })
-        //membres
+        .when('/galerie', {
+            template: '<composant-galerie></composant-galerie>'
+        })
         .when('/connexion', {
             template: '<composant-connexion></composant-connexion>'
         })
+        //membres
         .when('/admin-membres', {
             template: '<composant-lister-membre></composant-lister-membre>'
         })

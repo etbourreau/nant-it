@@ -1,0 +1,16 @@
+<div class="row galerieItem" ng-repeat="item in $ctrl.items">
+    <a href="{{item.lien}}" target="_blank">
+        <div class="img col-xs-4" ng-class="item.classImg">
+            <img
+                class="img-responsive"
+                ng-src="/assets/galerie/{{item.image}}"
+                err-src="/assets/galerie/default.jpg"
+                alt="{{item.titre}}"
+                title="{{item.titre}}"/>
+        </div>
+        <div class="txt col-xs-8" ng-class="item.classTxt">
+            <div class="titre">{{item.titre}}</div>
+            <div class="description">{{item.description}}</div>
+        </div>
+    </a>
+</div>

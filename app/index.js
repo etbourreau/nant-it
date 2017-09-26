@@ -11,6 +11,7 @@ import angular from 'angular'
 //Import Components
     import composantMenu from './menu/menu.component'
     import composantPresentation from './presentation/presentation.component'
+    import composantGalerie from './galerie/galerie.component'
     import composantConnexion from './connexion/connexion.component'
     //ADMIN
     import composantListerMembre from './admin/membre/membre.lister.component'
@@ -53,6 +54,7 @@ import angular from 'angular'
     //Components
     .component('composantMenu', composantMenu)
     .component('composantPresentation', composantPresentation)
+    .component('composantGalerie', composantGalerie)
     .component('composantConnexion', composantConnexion)
     //ADMIN
     .component('composantListerMembre', composantListerMembre)
