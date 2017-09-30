@@ -1,9 +1,8 @@
 #!/bin/sh
  
-ssh app@APP.SERVER.IP.ADDRESS <<EOF
-  cd ~/hello-jenkins
+ssh app@5.135.240.8 <<EOF
+  cd /nant-it
   git pull
-  npm install --production
-  forever restartall
+  npm install
   exit
 EOF
