@@ -3,7 +3,8 @@
 ssh app@5.135.240.8 <<EOF
   cd /nant-it
   git pull
-  npm run build
-  npm install
+  sudo npm run build
+  sudo npm install
+  sudo npm start
   exit
 EOF
