@@ -10,8 +10,8 @@
     "dev": "npm-run-all setdev --parallel launch:*",
     "prod": "npm-run-all setprod --parallel launch:*",
         
-    "setdev": "cross-env NODE_ENV=dev webpack",
-    "setprod": "cross-env NODE_ENV=production webpack -p",
+    "setdev": "cross-env NODE_ENV=dev",
+    "setprod": "cross-env NODE_ENV=production",
         
     "launch:server": "webpack-dev-server --open",
     "launch:api": "json-server -w db.json"
