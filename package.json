@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "npm-run-all": "^4.0.2",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
     "angular": "^1.6.4",
     "json-server": "^0.10.0",
     "angular-route": "^1.6.4",
