@@ -8,10 +8,6 @@ export default class ControleurModifierMembre {
             this.service = serviceGalerie
 
             this.item = this.service.modif
-            if (this.item.image == 'none') {
-                this.item.image = ''
-                this.noImage = true
-            }
         }
     }
 
@@ -23,8 +19,9 @@ export default class ControleurModifierMembre {
         if (this.isInvalidForm()) {
             this.errorEmpty = true
         } else {
-            if (this.image) {
-                this.item.image = this.image
+            this.item.image = this.format.formatAccents(this.item.titre.toLowerCase().trim())
+            while(this.item.image.includes(' ')){
+                this.item.image = this.item.image.replace(' ', '-')
             }
             this.service.saveItem(this.item)
                 .then((result) =>

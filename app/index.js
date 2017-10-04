@@ -12,6 +12,7 @@ import angular from 'angular'
     import composantMenu from './menu/menu.component'
     import composantPresentation from './presentation/presentation.component'
     import composantGalerie from './galerie/galerie.component'
+    import composantEquipe from './equipe/equipe.component'
     import composantConnexion from './connexion/connexion.component'
     //ADMIN
     import composantListerMembre from './admin/membre/membre.lister.component'
@@ -26,6 +27,7 @@ import angular from 'angular'
     import serviceUtilisateur from './utilisateur/utilisateur.service'
     import serviceGrade from './grade/grade.service'
     import serviceSession from './session/session.service'
+    import serviceString from './utils/string.service'
     import serviceMenu from './menu/menu.service'
     import serviceGalerie from './galerie/galerie.service'
     import serviceMembre from './admin/membre/membre.service'
@@ -47,6 +49,7 @@ import angular from 'angular'
     .service('serviceUtilisateur', serviceUtilisateur)
     .service('serviceSession', serviceSession)
     .service('serviceGrade', serviceGrade)
+    .service('serviceString', serviceString)
     .service('serviceMenu', serviceMenu)
     .service('serviceGalerie', serviceGalerie)
     .service('serviceMembre', serviceMembre)
@@ -55,6 +58,7 @@ import angular from 'angular'
     .component('composantMenu', composantMenu)
     .component('composantPresentation', composantPresentation)
     .component('composantGalerie', composantGalerie)
+    .component('composantEquipe', composantEquipe)
     .component('composantConnexion', composantConnexion)
     //ADMIN
     .component('composantListerMembre', composantListerMembre)

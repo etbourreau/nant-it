@@ -1,10 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const API_URL = process.env.NODE_ENV === 'production'
-	? 'http://5.135.240.8:3000' : 'http://localhost:3000';
-const publicPath = process.env.NODE_ENV === 'production' ? '/'
-	: '/';
+const PRODUCTION_URL = '5.135.240.8'
+const URL = process.env.NODE_ENV === 'production' ? PRODUCTION_URL : 'localhost'
+const API_URL = 'http://'+URL+':3000'
+const PORT = '9000'
+console.log("Deploying site to "+URL+":"+PORT+" and database to "+URL+":3000")
+
+const publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
 
 const output = 'dist';
 
@@ -19,8 +22,8 @@ module.exports = {
 	devServer: {
 		contentBase: path.join(__dirname, output),
 		compress: true,
-		host: '5.135.240.8',
-		port: 80,
+		host: URL,
+		port: PORT,
 		historyApiFallback: true
 	},
 

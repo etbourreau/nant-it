@@ -10,6 +10,9 @@ export function route($routeProvider, $locationProvider) {
         .when('/galerie', {
             template: '<composant-galerie></composant-galerie>'
         })
+        .when('/equipe', {
+            template: '<composant-equipe></composant-equipe>'
+        })
         .when('/connexion', {
             template: '<composant-connexion></composant-connexion>'
         })

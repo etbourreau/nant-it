@@ -1,0 +1,36 @@
+<div class="grade" ng-repeat="grade in $ctrl.listGrades" ng-if="$ctrl.listItems[grade.id].length > 0">
+    <h2 class="row text-center">
+        Nos {{grade.pluriel}} :
+    </h2>
+    <div class="row equipeItem" ng-repeat="utilisateur in $ctrl.listItems[grade.id]">
+        <div class="img col-xs-3" ng-class="utilisateur.classImg">
+            <img
+                class="img-responsive"
+                ng-src="/assets/avatar/{{utilisateur.image}}"
+                err-src="/assets/avatar/default.jpg"
+                alt="{{utilisateur.nom}} {{utilisateur.prenom}}"
+                title="{{utilisateur.nom}} {{utilisateur.prenom}}"/>
+        </div>
+        <div class="txt col-xs-9 text-left" ng-class="utilisateur.classTxt">
+            <div class="description">
+                <h3>{{utilisateur.prenom}} {{utilisateur.nom}}</h3><br>
+                <a class="email"
+                   href="mailto:{{utilisateur.email}}"
+                   target="_blank">
+                    {{utilisateur.email}}
+                </a><br>
+                <br>
+                {{utilisateur.description}}<br>
+                <br>
+                <div ng-if="utilisateur.competences.length > 0">
+                Compétences techniques :
+                <ul>
+                    <li class="col-xs-6" ng-repeat="comp in utilisateur.competences">
+                        {{comp}}
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

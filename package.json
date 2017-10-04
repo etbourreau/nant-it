@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel dev:*",
-    "dev:server": "webpack-dev-server --open",
-    "dev:api": "json-server db.json -w",
-    "std": "standard \"app/*.js\"",
-    "build": "cross-env NODE_ENV=production webpack -p",
-    "unit-tests": "karma start"
+    "dev": "npm-run-all setdev --parallel launch:*",
+    "prod": "npm-run-all setprod --parallel launch:*",
+        
+    "setdev": "cross-env NODE_ENV=dev webpack",
+    "setprod": "cross-env NODE_ENV=production webpack -p",
+        
+    "launch:server": "webpack-dev-server --open",
+    "launch:api": "json-server -w db.json"
   },
   "keywords": [],
   "author": "",
@@ -20,27 +22,21 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
     "cross-env": "^5.0.0",
-    "css-loader": "^0.28.1",
-    "jasmine-core": "^2.8.0",
-    "karma": "^1.7.1",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-webpack": "^2.0.4",
-    "npm-run-all": "^4.0.2",
-    "raw-loader": "^0.5.1",
     "standard": "^10.0.2",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "npm-run-all": "^4.0.2",
     "angular": "^1.6.4",
     "json-server": "^0.10.0",
     "angular-route": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
     "bootstrap": "^3.3.7",
     "file-loader": "^0.11.1",
+    "css-loader": "^0.28.1",
+    "raw-loader": "^0.5.1",
     "html-loader": "^0.5.1",
     "jssha": "^2.3.1",
     "lodash": "^4.17.4"

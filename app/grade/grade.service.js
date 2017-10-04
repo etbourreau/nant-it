@@ -39,31 +39,31 @@ export default class ServiceGrade{
         }
         
         creer(grade){
-            console.log('3', grade)
             grade.id = String(this.findIdSuivant())
             grade.priorite = String(grade.priorite)
-            console.log('4', grade)
             return this.http.post(this.url, grade)
                 .then(() => {
-                    console.log('5')
                     return this.refresh()
                     .then(() => {
-                        console.log('6', this.grades)
-                        console.log('7', grade.id)
                         return (grade.id)
                     })
             })
         }
         
+        supprimer(id){
+            return this.http.delete(this.url+'/'+id)
+                .then(() => {
+                    return this.refresh()
+            })
+        }
+        
         findIdSuivant(){
             let id = 0
-            console.log('3.33', id)
             this.grades.forEach(g => {
                 if(g.id > id){
                     id = g.id
                 }
             })
-            console.log('3.33', id)
             return (parseInt(id)+1)
         }
 }

@@ -1,9 +1,12 @@
 export default class ServiceUtilisateur {
-    constructor($http, jssha, apiUrls) {
+    constructor($http, jssha, apiUrls, serviceGrade) {
         this.http = $http
         this.encrypt = jssha
         this.url = apiUrls.utilisateur
         this.defaultPassword = 'nant-it'
+        
+        this.serviceGrade = serviceGrade
+        
         this.utilisateurs = [
         ]
         this.refresh()
@@ -37,6 +40,16 @@ export default class ServiceUtilisateur {
         let utilisateur = this.utilisateurs.find(u => u.id == id)
         return (utilisateur)?JSON.parse(JSON.stringify(utilisateur)):null
     }
+    
+    findUtilisateursParIdGrade(idGrade){
+        let utilisateurs = []
+        this.utilisateurs.forEach(u => {
+            if(u.grade == idGrade){
+                utilisateurs.push(JSON.parse(JSON.stringify(u)))
+            }
+        })
+        return utilisateurs
+    }
 
     findUtilisateurParEmailEtPwd(email, pwd) {
         let utilisateur = this.utilisateurs.find(u =>
@@ -62,6 +75,9 @@ export default class ServiceUtilisateur {
             let u = this.findUtilisateurParId(utilisateur.id)
             if (u) {
                 for (let k in utilisateur) {
+                    if(k == 'grade' && u[k] != utilisateur[k]){
+                        this.supprimerGrade(u.id, u.grade)
+                    }
                     u[k] = utilisateur[k]
                 }
                 return this.http.put(this.url+'/'+u.id, u)
@@ -85,6 +101,23 @@ export default class ServiceUtilisateur {
     }
     
     supprimerUtilisateur(id){
+        let grade = this.findUtilisateurParId(id).grade
         return this.http.delete(this.url+'/'+id)
+            .then(result => {
+                this.supprimerGrade(id, grade)
+                return result
+        })
+    }
+    
+    supprimerGrade(id, idGrade){
+        let found = false
+        this.utilisateurs.forEach(u => {
+            if(u.grade == idGrade && u.id != id){
+                found = true
+            }
+        })
+        if(!found){
+            this.serviceGrade.supprimer(idGrade)
+        }
     }
 }

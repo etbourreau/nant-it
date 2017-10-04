@@ -1,5 +1,5 @@
 export default class ControleurModifierMembre{
-        constructor($location, serviceMembre, serviceGrade, serviceSession){
+        constructor($location, serviceMembre, serviceGrade, serviceSession, serviceString){
             this.location = $location
             if(!serviceSession.isAdmin()){
                 this.location.path('/')
@@ -7,6 +7,7 @@ export default class ControleurModifierMembre{
                 this.service = serviceMembre
                 this.serviceGrade = serviceGrade
                 this.session = serviceSession
+                this.format = serviceString
 
                 this.utilisateur = this.service.modif
                 this.refreshGrades()
@@ -35,10 +36,12 @@ export default class ControleurModifierMembre{
             }else if(this.serviceGrade.isGradeExisteParNom(this.nouveauGrade.nom)){
                 this.errorExistingGrade = true
             }else{
+                let pluriel = this.nouveauGrade.pluriel ? this.nouveauGrade.pluriel : this.nouveauGrade.nom+'s'
                 this.serviceGrade.creer({
                     id: 0,
                     priorite: this.nouveauGrade.priorite,
-                    libelle: this.nouveauGrade.nom})
+                    libelle: this.nouveauGrade.nom,
+                    pluriel: pluriel})
                     .then((id) => {
                         this.refreshGrades()
                         this.utilisateur.grade = id
@@ -48,13 +51,21 @@ export default class ControleurModifierMembre{
         
         valider(){
             this.errorEmpty = false
-            if(this.isInvalidForm){
+            if(this.isInvalidForm()){
                 this.errorEmpty = true
             }else{
-                this.utilisateur.image = this.utilisateur.prenom.toLowerCase()
-                    +'-'+this.utilisateur.nom.toLowerCase()+'.jpg'
-                this.utilisateur.email = this.utilisateur.prenom.toLowerCase()
-                    +'.'+this.utilisateur.nom.toLowerCase()+'@nant-it.fr'
+                this.utilisateur.image =
+                    this.format.formatAccents(this.utilisateur.prenom.toLowerCase())
+                    +'-'
+                    +this.format.formatAccents(this.utilisateur.nom.toLowerCase())
+                    +'.jpg'
+                
+                this.utilisateur.email =
+                    this.format.formatAccents(this.utilisateur.prenom.toLowerCase())
+                    +'.'
+                    +this.format.formatAccents(this.utilisateur.nom.toLowerCase())
+                    +'@nant-it.fr'
+                
                 if(!this.utilisateur.competences){
                     this.utilisateur.competences = ''
                 }
