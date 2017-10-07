@@ -1,0 +1,8 @@
+#!/bin/sh
+ 
+ssh app@5.135.240.8 <<EOF
+  cd /nant-it
+  git pull
+  npm run prod --production
+  exit
+EOF
