@@ -5,6 +5,5 @@ ssh app@5.135.240.8 <<EOF
   git pull
   npm install --production
   forever restartall
-  npm run dev:api
   exit
 EOF
