@@ -5,6 +5,7 @@ ssh app@5.135.240.8 <<EOF
   git pull
   npm install --production
   forever restartall
+  fuser -k 3000/tcp
   json-server db.json
   exit
 EOF
