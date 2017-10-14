@@ -1,0 +1,8 @@
+{
+        // Comments are supported
+    "uid": "app",
+    "append": true,
+    "watch": true,
+    "script": "db.json",
+    "sourceDir": "/nant-it"
+}
