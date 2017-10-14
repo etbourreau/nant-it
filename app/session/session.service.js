@@ -14,6 +14,7 @@ export default class ServiceSession{
             let utilisateur = this.utilisateurs.findUtilisateurParEmailEtPwd(email, pwd)
             if(utilisateur){
                 sessionStorage.setItem('id', utilisateur.id)
+                this.menu.getMessagesNonLus()
                 return true
             }else{
                 return false

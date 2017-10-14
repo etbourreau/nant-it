@@ -1,0 +1,26 @@
+<div class="row" ng-repeat="msg in $ctrl.messages| orderBy:'date':true">
+    <table class="col-xs-12 table table-bordered">
+        <tr>
+            <td>
+                {{msg.date}}
+            </td>
+            <td>
+                {{msg.nom}} {{msg.prenom}}
+            </td>
+            <td>
+                {{msg.societe}}
+            </td>
+            <td>
+                {{msg.tel}}
+            </td>
+            <td>
+                <a href="mailto:{{msg.email}}">{{msg.email}}</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: left">
+                {{msg.message}}
+            </td>
+        </tr>
+    </table>
+</div>

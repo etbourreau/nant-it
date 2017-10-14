@@ -13,18 +13,18 @@ export function route($routeProvider, $locationProvider) {
         .when('/equipe', {
             template: '<composant-equipe></composant-equipe>'
         })
+        .when('/contact', {
+            template: '<composant-contact></composant-contact>'
+        })
         .when('/connexion', {
             template: '<composant-connexion></composant-connexion>'
         })
         //membres
-        .when('/admin-membres', {
-            template: '<composant-lister-membre></composant-lister-membre>'
+        .when('/admin-messages', {
+            template: '<composant-messages></composant-messages>'
         })
-        .when('/admin-membre-ajouter', {
-            template: '<composant-ajouter-membre></composant-ajouter-membre>'
-        })
-        .when('/admin-membre-modifier', {
-            template: '<composant-modifier-membre></composant-modifier-membre>'
+        .when('/admin-profil', {
+            template: '<composant-profil></composant-profil>'
         })
         .when('/admin-galerie', {
             template: '<composant-lister-galerie></composant-lister-galerie>'
@@ -35,8 +35,14 @@ export function route($routeProvider, $locationProvider) {
         .when('/admin-galerie-modifier', {
             template: '<composant-modifier-galerie></composant-modifier-galerie>'
         })
-        .when('/admin-profil', {
-            template: '<composant-profil></composant-profil>'
+        .when('/admin-membres', {
+            template: '<composant-lister-membre></composant-lister-membre>'
+        })
+        .when('/admin-membre-ajouter', {
+            template: '<composant-ajouter-membre></composant-ajouter-membre>'
+        })
+        .when('/admin-membre-modifier', {
+            template: '<composant-modifier-membre></composant-modifier-membre>'
         })
         //redirect
         .otherwise({

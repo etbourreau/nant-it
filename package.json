@@ -8,7 +8,6 @@
    },
   "scripts": {
     "dev": "npm-run-all --parallel launch:*",
-    "prod": "npm-run-all --production --parallel launch:*",
         
     "launch:server": "webpack-dev-server --open",
     "launch:api": "json-server -w db.json"

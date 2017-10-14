@@ -1,5 +1,8 @@
 export default class ControleurConnexion {
     constructor($location, serviceSession, serviceMenu) {
+        if(serviceSession.isConnecte()){
+            $location.path('/')
+        }
         this.location = $location
         this.session = serviceSession
         this.menu = serviceMenu

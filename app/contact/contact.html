@@ -1,0 +1,99 @@
+<form class="form-horizontal" novalidate>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="nom">Nom</label>  
+        <div class="col-sm-7">
+            <input id="nom"
+                   ng-model="$ctrl.nom"
+                   type="text"
+                   placeholder="Votre Nom"
+                   class="form-control input-md"
+                   ng-keydown="$ctrl.resetAlerts()">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="prenom">Prénom</label>  
+        <div class="col-sm-7">
+            <input id="prenom"
+                   ng-model="$ctrl.prenom"
+                   type="text"
+                   placeholder="Votre Prénom"
+                   class="form-control input-md"
+                   ng-keydown="$ctrl.resetAlerts()">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="email">Email</label>  
+        <div class="col-sm-7">
+            <input id="email"
+                   ng-model="$ctrl.email"
+                   type="email"
+                   placeholder="Votre email"
+                   class="form-control input-md"
+                   ng-keydown="$ctrl.resetAlerts()">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="societe">Société</label>  
+        <div class="col-sm-7">
+            <input id="societe"
+                   ng-model="$ctrl.societe"
+                   type="text"
+                   placeholder="Votre Société"
+                   class="form-control input-md"
+                   ng-keydown="$ctrl.resetAlerts()">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="tel">Téléphone</label>
+        <div class="col-sm-7">
+            <input id="tel"
+                   ng-model="$ctrl.tel"
+                   type="text"
+                   placeholder="Le numéro sur lequel vous joindre"
+                   class="form-control input-md"
+                   ng-keydown="$ctrl.resetAlerts()">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label" for="message">Message</label>
+        <div class="col-sm-7">                     
+            <textarea id="message"
+                      class="form-control"
+                      placeholder="Votre message"
+                      ng-model="$ctrl.message"
+                      ng-keydown="$ctrl.resetAlerts()"></textarea>
+        </div>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-1 alert alert-danger" ng-show="$ctrl.error">
+        <span ng-show="$ctrl.errorServeur">La connexion avec le serveur a échoué</span>
+        <span ng-show="$ctrl.errorEmptyNom">Merci de saisir votre nom et votre prénom</span>
+        <span ng-show="$ctrl.errorEmptyEmail">Merci de saisir votre email</span>
+        <span ng-show="$ctrl.errorEmptySociete">Merci de saisir le nom de votre société</span>
+        <span ng-show="$ctrl.errorEmptyTel">Merci de saisir votre numéro de téléphone</span>
+        <span ng-show="$ctrl.errorInvalidTel">Merci de saisir un numéro de téléphone valide</span>
+        <span ng-show="$ctrl.errorEmptyMessage">Merci de saisir un message</span>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-1 alert alert-success" ng-show="$ctrl.success">
+        Votre message nous a bien été transmis. Nous étudierons votre demande dans les plus brefs délais.
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-11 col-xs-12 text-right">
+            <button class="btn btn-success"
+                    ng-click="$ctrl.envoyerMessage()">Envoyer</button>
+        </div>
+    </div>
+</form>

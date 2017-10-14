@@ -7,6 +7,7 @@ const frontUrls = {
     contact: '/contact',
     
     connexion: '/connexion',
+    gestionMessages: '/admin-messages',
     gestionProfil: '/admin-profil',
     gestionGalerie: '/admin-galerie',
     gestionMembres: '/admin-membres'

@@ -68,9 +68,7 @@ export default class ControleurProfil {
                 })
         }
         
-        this.timeout(() => {
-            this.resetInformationsAlerts()
-        }, this.timeAlert)
+        this.timeout(() => { this.resetInformationsAlerts() }, this.timeAlert)
     }
     
     checkPwdForm(actual){

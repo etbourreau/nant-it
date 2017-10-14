@@ -1,5 +1,5 @@
 export default class ServiceMenu {
-    constructor($timeout) {
+    constructor($timeout, serviceContact) {
         this.timeout = $timeout
         this.limites = {
             logo: {
@@ -37,6 +37,7 @@ export default class ServiceMenu {
             }
         }
         this.setTransitions(true)
+        this.contact = serviceContact
     }
     
     getTempsTransition(){
@@ -138,5 +139,12 @@ export default class ServiceMenu {
             document.getElementById('btn-' + page).style.margin = '-1px'
         }
 
+    }
+    
+    getMessagesNonLus(){
+        return this.contact.refresh()
+            .then(() => {
+                return this.contact.getNonLus()
+            })
     }
 }

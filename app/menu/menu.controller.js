@@ -1,10 +1,11 @@
-export default class MenuCtrl {
-    constructor($timeout, frontUrls, $location, serviceMenu, serviceSession) {
+export default class ControleurMenu {
+    constructor($timeout, frontUrls, $location, serviceMenu, serviceSession, serviceContact) {
         this.timeout = $timeout
         this.frontUrls = frontUrls
         this.location = $location
         this.service = serviceMenu
         this.session = serviceSession
+        this.contact = serviceContact
         if (this.location.path() != '/') {
             let lienValide = false
             for (let k in this.frontUrls) {
@@ -31,7 +32,13 @@ export default class MenuCtrl {
                 
             }
         }, 1)
-
+        
+        this.getMessagesNonLus()
+    }
+    
+    getMessagesNonLus(){
+        this.service.getMessagesNonLus()
+            .then(nb => this.nbMsgNonLus = nb)
     }
 
     rediriger(page) {
@@ -60,6 +67,8 @@ export default class MenuCtrl {
             }
             this.service.setBtnActive(page)
         }
+        
+        this.getMessagesNonLus()
     }
 
     isConnecte() {
@@ -76,10 +85,11 @@ export default class MenuCtrl {
 
 }
 
-MenuCtrl.$inject = [
+ControleurMenu.$inject = [
     '$timeout',
     'frontUrls',
     '$location',
     'serviceMenu',
-    'serviceSession'
+    'serviceSession',
+    'serviceContact'
 ]

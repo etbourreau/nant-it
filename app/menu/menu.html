@@ -52,6 +52,11 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="connecte-dropdown">
                         <li>
+                            <a ng-click="$ctrl.rediriger('gestionMessages')">
+                                Messages <span class="badge" ng-show="$ctrl.nbMsgNonLus && $ctrl.nbMsgNonLus > 0">{{$ctrl.nbMsgNonLus}}</span>
+                            </a>
+                        </li>
+                        <li>
                             <a ng-click="$ctrl.rediriger('gestionProfil')">
                                 Mon Profil
                             </a>

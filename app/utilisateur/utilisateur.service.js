@@ -97,7 +97,6 @@ export default class ServiceUtilisateur {
             
             return this.http.post(this.url, utilisateur)
         }
-        this.refresh()
     }
     
     supprimerUtilisateur(id){
