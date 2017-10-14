@@ -3,6 +3,6 @@
     "uid": "app",
     "append": true,
     "watch": true,
-    "script": "db.json",
+    "script": "npm run launch:api",
     "sourceDir": "/nant-it"
 }
