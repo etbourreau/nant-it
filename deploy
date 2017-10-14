@@ -4,8 +4,6 @@ ssh app@5.135.240.8 <<EOF
   cd /nant-it
   git pull
   npm install --production
-  fuser -n tcp -k 3000
-  nohup json-server db.json &
   forever restartall
   exit
 EOF
