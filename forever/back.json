@@ -1,8 +1,0 @@
-{
-        // Comments are supported
-    "uid": "app",
-    "append": true,
-    "watch": true,
-    "script": "npm run launch:api",
-    "sourceDir": "/nant-it"
-}
