@@ -1,3 +1,52 @@
+div.flags{
+    position: absolute;
+    top: 5vh;
+    right: 0;
+    height: 30vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+div.flags a.flag{
+    height: 60px;
+    position: relative;
+    background: rgb(67, 146, 179);
+    margin-bottom: 30px;
+    padding: 20px;
+    max-width: 25vw;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    white-space: nowrap;
+    color: white;
+    font-size: 18px;
+    transition: color 100ms ease;
+}
+
+div.flags a.flag:before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-top: 30px solid rgb(67, 146, 179);
+    border-bottom: 30px solid rgb(67, 146, 179);
+}
+
+div.flags a.flag:hover {
+    cursor: pointer;
+    background: radial-gradient(#DDF, rgb(67, 146, 179) 60%);
+    text-decoration: none;
+}
+
 div.logo{
     text-align: center;
     position: absolute;
@@ -37,12 +86,14 @@ nav > div > ul > li{
 }
 
 nav > div > ul > li a{
-    color: white;
+    color: #66ccff;
+    transition: color 200ms ease;
 }
 
 nav > div > ul > li a:hover{
     text-decoration: none;
     cursor: pointer;
+    color: white;
 }
 
 nav > div > ul > li ul a{
@@ -51,15 +102,15 @@ nav > div > ul > li ul a{
 }
 
 @media (max-width: 768px) {
-    div.clock, div.logo {
+    div.logo, div.flags {
         display: none;
     }
-    
+
     nav#menu{
         margin-left: 0px;
         width: 100%;
     }
-    
+
     nav > div > ul > li{
         font-size: 16px;
     }

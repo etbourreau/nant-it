@@ -26,9 +26,7 @@ div.equipeItem div.txt div.description a.email{
 
 div.equipeItem div.txt div.description a.email:hover, div.equipeItem div.txt div.description a.email:focus{
     text-decoration: none;
-    border: 1px solid #555;
-    border-radius: 6px;
-    margin: -1px;
+    color: #66ccff;
 }
 
 div.equipeItem div.txt ul li{

@@ -14,12 +14,6 @@ div.galerieItem a:hover{
     border-radius: 6px;
     margin: -1px;
     text-decoration: none;
-    
-    transition: background 500ms ease;
-    background: -webkit-radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
-    background: -o-radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
-    background: -moz-radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
-    background: radial-gradient(rgba(205,231,240,0.75), rgba(0, 0, 0, 0));
 }
 
 div.galerieItem a:focus{
@@ -42,7 +36,4 @@ div.galerieItem a div.txt div.titre{
     width: 100%;
     font-size: 25px;
     color: #DDD;
-}
-
-div.galerieItem a div.txt div.description{
 }

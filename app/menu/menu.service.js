@@ -2,6 +2,13 @@ export default class ServiceMenu {
     constructor($timeout, serviceContact) {
         this.timeout = $timeout
         this.limites = {
+            flags: {
+                opacity: {
+                    min: 0,
+                    max: 1,
+                    temps: 200
+                }
+            },
             logo: {
                 maxWidth: {
                     min: '15%',
@@ -10,13 +17,13 @@ export default class ServiceMenu {
                 marginLeft: {
                     min: '0px',
                     max: '10%',
-                    temps: 150
+                    temps: 200
                 }
             },
             nav : {
                 marginTop: {
                     min : '0px',
-                    max: '30vw',
+                    max: '40vh',
                     temps: 350
                 }
             },
@@ -24,7 +31,7 @@ export default class ServiceMenu {
                 transform: {
                     min: 'scale(0, 0)',
                     max : 'scale(1, 1)',
-                    temps: 500
+                    temps: 750
                 },
                 minHeight: {
                     min: '0px',
@@ -56,6 +63,8 @@ export default class ServiceMenu {
     }
     
     setTransitions(state){
+        document.getElementById('flags').style.transition =
+            (state)? 'opacity ' + this.limites.flags.opacity.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('logo-horizontal').style.transition =
             (state)? 'opacity ' + this.limites.logo.marginLeft.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('logo-vertical').style.transition =
@@ -70,6 +79,9 @@ export default class ServiceMenu {
     }
 
     setPageContenu(state) {
+        document.getElementById('flags').style.opacity =
+            (state) ? this.limites.flags.opacity.min : this.limites.flags.opacity.max
+        document.getElementById('flags').style.display = (state) ? 'none' : 'block'
         this.setLogo((state)? 'vertical': 'horizontal')
         document.getElementById('logo').style.maxWidth =
             (state) ? this.limites.logo.maxWidth.min : this.limites.logo.maxWidth.max
@@ -85,10 +97,13 @@ export default class ServiceMenu {
 
     showPageContenu(state) {
         if (state) {
-            //reduire logo
+            //enlever flags & reduire logo
+            document.getElementById('flags').style.opacity = this.limites.flags.opacity.min
             document.getElementById('logo').style.marginLeft = this.limites.logo.marginLeft.min
             document.getElementById('logo').style.maxWidth = this.limites.logo.maxWidth.min
             this.timeout(() => {
+                //retirer flags
+                document.getElementById('flags').style.display = 'none'
                 //changer logo -> vertical
                 this.setLogo('vertical')
                 //monter menu
@@ -106,6 +121,8 @@ export default class ServiceMenu {
             document.getElementById('pageContenu').style.transform = this.limites.page.transform.min
             this.timeout(() =>
             {
+                //ajouter flags
+                document.getElementById('flags').style.display = 'block'
                 document.getElementById('pageContenu').style.maxHeight = this.limites.page.maxHeight.min
                 document.getElementById('pageContenu').style.minHeight = this.limites.page.minHeight.min
                 //descendre le menu
@@ -113,7 +130,8 @@ export default class ServiceMenu {
                 this.timeout(() => {
                     //changer logo -> horizontal TODO
                     this.setLogo('horizontal')
-                    //agrandir logo
+                    //afficher flags & agrandir logo
+                    document.getElementById('flags').style.opacity = this.limites.flags.opacity.max
                     document.getElementById('logo').style.maxWidth = this.limites.logo.maxWidth.max
                     document.getElementById('logo').style.marginLeft = this.limites.logo.marginLeft.max
                 }, this.limites.nav.marginTop.temps)
