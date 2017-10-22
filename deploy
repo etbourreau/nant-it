@@ -4,11 +4,11 @@ ssh app@5.135.240.8 <<EOF
   cd /nant-it
   git pull
   cd /nant-it/web
-  sudo fuser -k 80/tcp
-  sudo npm start
+  fuser -k 80/tcp
+  nohup npm start & < /nant-it/logweb.txt
   cd /nant-it/db
-  sudo fuser -k 3000/tcp
-  sudo npm start
+  fuser -k 3000/tcp
+  nohup npm start & < /nant-it/logdb.txt
  # npm install --production
  # forever restartall
   exit
