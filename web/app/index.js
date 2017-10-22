@@ -1,6 +1,5 @@
 
 //Import Basic/Core
-    import 'jsdom'
     import angular from 'angular'
     import RouteModule from 'angular-route'
     import 'bootstrap/dist/css/bootstrap.css'
