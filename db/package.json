@@ -1,0 +1,15 @@
+{
+    "name": "nant-it_db",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm i && json-server db.json -h 5.135.240.8 -p 3000",
+        "dev": "npm i && json-server db.json -p 3000"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "json-server": "^0.10.0"
+    }
+}
