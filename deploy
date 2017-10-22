@@ -5,7 +5,7 @@ ssh app@5.135.240.8 <<EOF
   git pull
   cd /nant-it/web
   fuser -k 80/tcp
-  nohup npm start < /log/%c-web.txt &
+  nohup npm start > /log/web.txt &
   cd /nant-it/db
   fuser -k 3000/tcp
  # npm install --production
