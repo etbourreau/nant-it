@@ -14,7 +14,6 @@ const URL = process.env.NODE_ENV === 'production' ? 'http://' + PRODUCTION_URL :
 const PORT = process.env.NODE_ENV === 'production' ? PRODUCTION_PORT : LOCAL_PORT
 const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + PRODUCTION_URL + ':' + API_PORT : 'http://' + URL + ':' + API_PORT
 console.log('Deploying Web server to '+URL+':'+PORT)
-console.log('Deploying DB server to '+API_URL)
 
 const publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
 
