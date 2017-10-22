@@ -1,7 +1,7 @@
 //CONFIG
 const LOCAL_URL = 'localhost'
 const LOCAL_PORT = '81'
-const PRODUCTION_PORT = '80'
+const PRODUCTION_PORT = '81'
 const API_PORT = '3000'
 const PRODUCTION_URL = '5.135.240.8'
 const outputFolder = 'dist'
