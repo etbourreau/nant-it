@@ -21,7 +21,8 @@
 	}
 	
 	function createFolder($folderName, $path){
-		
+		//test si path est valide
+			//creer le dossier
 	}
 	
 	
