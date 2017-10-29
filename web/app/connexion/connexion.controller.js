@@ -1,16 +1,18 @@
 export default class ControleurConnexion {
-    constructor($location, serviceSession, serviceMenu) {
+    constructor($location, $timeout, serviceSession, serviceMenu) {
         if (serviceSession.isConnecte()) {
             $location.path('/')
         }
         this.location = $location
+        this.timeout = $timeout
         this.session = serviceSession
         this.menu = serviceMenu
+        
+        this.alertsTime = 1000
     }
 
     tryConnecter(email, pwd) {
-        this.error = false
-        this.errorEmpty = false
+        this.resetAlerts()
         if (!email || !pwd) {
             this.errorEmpty = true
         } else {
@@ -21,8 +23,15 @@ export default class ControleurConnexion {
                 this.error = true
             }
         }
-
+        this.timeout(() => {
+            this.resetAlerts()
+        }, this.alertsTime)
+    }
+    
+    resetAlerts(){
+        this.error = false
+        this.errorEmpty = false
     }
 }
 
-ControleurConnexion.$inject = ['$location', 'serviceSession', 'serviceMenu']
+ControleurConnexion.$inject = ['$location', '$timeout', 'serviceSession', 'serviceMenu']

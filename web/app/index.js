@@ -13,6 +13,7 @@
     import composantPresentation from './presentation/presentation.component'
     import composantGalerie from './galerie/galerie.component'
     import composantEquipe from './equipe/equipe.component'
+    import composantNosServices from './nosservices/nosservices.component'
     import composantContact from './contact/contact.component'
     import composantConnexion from './connexion/connexion.component'
     //ADMIN
@@ -63,6 +64,7 @@
     .component('composantPresentation', composantPresentation)
     .component('composantGalerie', composantGalerie)
     .component('composantEquipe', composantEquipe)
+    .component('composantNosServices', composantNosServices)
     .component('composantContact', composantContact)
     .component('composantConnexion', composantConnexion)
     //ADMIN

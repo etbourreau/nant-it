@@ -1,1 +1,3 @@
 /db/nbproject/private/
+/db/db.json
+**/node_modules

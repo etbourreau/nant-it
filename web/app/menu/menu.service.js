@@ -81,7 +81,7 @@ export default class ServiceMenu {
     setPageContenu(state) {
         document.getElementById('flags').style.opacity =
             (state) ? this.limites.flags.opacity.min : this.limites.flags.opacity.max
-        document.getElementById('flags').style.display = (state) ? 'none' : 'block'
+        document.getElementById('flags').style.display = (state) ? 'none' : 'flex'
         this.setLogo((state)? 'vertical': 'horizontal')
         document.getElementById('logo').style.maxWidth =
             (state) ? this.limites.logo.maxWidth.min : this.limites.logo.maxWidth.max
@@ -122,7 +122,7 @@ export default class ServiceMenu {
             this.timeout(() =>
             {
                 //ajouter flags
-                document.getElementById('flags').style.display = 'block'
+                document.getElementById('flags').style.display = 'flex'
                 document.getElementById('pageContenu').style.maxHeight = this.limites.page.maxHeight.min
                 document.getElementById('pageContenu').style.minHeight = this.limites.page.minHeight.min
                 //descendre le menu

@@ -13,6 +13,9 @@ export function route($routeProvider, $locationProvider) {
         .when('/equipe', {
             template: '<composant-equipe></composant-equipe>'
         })
+        .when('/services', {
+            template: '<composant-nos-services></composant-nos-services>'
+        })
         .when('/contact', {
             template: '<composant-contact></composant-contact>'
         })

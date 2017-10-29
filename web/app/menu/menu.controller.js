@@ -23,52 +23,60 @@ export default class ControleurMenu {
         }
 
         this.timeout(() =>
-            {
-                if (this.location.path() == '/'
-                    && document.getElementById(
+        {
+            if (this.location.path() == '/'
+                && document.getElementById(
                     'pageContenu').style.transform == 'scale(1, 1)') {
-                    this.service.setTransitions(false)
-                    this.service.setPageContenu(false)
-                    this.timeout(() =>
-                        {
-                            this.service.setTransitions(true)
-                        }, 1)
+                this.service.setTransitions(false)
+                this.service.setPageContenu(false)
+                this.timeout(() =>
+                {
+                    this.service.setTransitions(true)
+                }, 1)
 
-                }
-            }, 1)
-
+            }
+        }, 1)
         this.getMessagesNonLus()
+
     }
 
     getMessagesNonLus() {
-        this.service.getMessagesNonLus()
-            .then(nb =>
-                this.nbMsgNonLus = nb)
+        if (this.session.isConnecte()) {
+            this.service.getMessagesNonLus()
+                .then(nb =>
+                    this.nbMsgNonLus = nb)
+        }
     }
 
     rediriger(page) {
+        let hash = null
+        if(page.includes('#')){
+            hash = page.split('#')[1]
+            page = page.split('#')[0]
+        }
         if (!this.mouvement) {
             this.mouvement = true
 
             if (page == 'accueil' && document.getElementById(
                 'pageContenu').style.minHeight == this.service.limites.page.minHeight.max) {
                 this.service.showPageContenu(false)
-                this.timeout(() =>
-                {
+                this.timeout(() => {
                     this.location.path(this.frontUrls[page])
+                    this.location.hash(hash)
                     this.mouvement = false
                 }, this.service.getTempsTransition())
             } else if (page != 'accueil'
                 && document.getElementById(
-                'pageContenu').style.minHeight == this.service.limites.page.minHeight.min) {
+                    'pageContenu').style.minHeight == this.service.limites.page.minHeight.min) {
                 this.location.path(this.frontUrls[page])
+                this.location.hash(hash)
                 this.service.showPageContenu(true)
-                this.timeout(() =>
-                {
+                this.timeout(() => {
                     this.mouvement = false
                 }, this.service.getTempsTransition())
             } else {
                 this.location.path(this.frontUrls[page])
+                this.location.hash(hash)
                 this.mouvement = false
             }
             this.service.setBtnActive(page)

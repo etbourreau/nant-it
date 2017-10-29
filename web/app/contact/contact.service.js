@@ -23,19 +23,21 @@ export default class ServiceContact {
             })
 
     }
-    
-    findAll(){
+
+    findAll() {
         return JSON.parse(JSON.stringify(this.messages))
     }
 
     getNonLus() {
         let nb = 0;
-        this.messages.forEach(msg =>
+        if (this.messages) {
+            this.messages.forEach(msg =>
             {
                 if (msg.nouveau) {
                     nb++
                 }
             })
+        }
         return nb
     }
 
@@ -60,12 +62,12 @@ export default class ServiceContact {
     setTousLus() {
         if (this.messages) {
             this.messages.forEach(msg =>
-                {
-                    if (msg.nouveau) {
-                        msg.nouveau = false
-                        this.http.put(this.url + '/' + msg.id, msg)
-                    }
-                })
+            {
+                if (msg.nouveau) {
+                    msg.nouveau = false
+                    this.http.put(this.url + '/' + msg.id, msg)
+                }
+            })
         }
 
     }
