@@ -4,6 +4,7 @@ const LOCAL_PORT = '81'
 const PRODUCTION_PORT = '80'
 const API_PORT = '3000'
 const PRODUCTION_URL = '5.135.240.8'
+const HOSTNAME = "nant-it.fr"
 const outputFolder = 'dist'
 
 //DO NOT TOUCH
@@ -13,7 +14,7 @@ const path = require('path')
 const URL = process.env.NODE_ENV === 'production' ? PRODUCTION_URL : LOCAL_URL
 const PORT = process.env.NODE_ENV === 'production' ? PRODUCTION_PORT : LOCAL_PORT
 const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + PRODUCTION_URL + ':' + API_PORT : 'http://' + URL + ':' + API_PORT
-console.log('Deploying Web server to '+URL+':'+PORT)
+console.log('Deploying Web server to ' + URL + ':' + PORT)
 
 const publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
 
@@ -28,6 +29,8 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, outputFolder),
         compress: true,
+        disableHostCheck: true,
+        public: HOSTNAME,
         host: URL,
         port: PORT,
         historyApiFallback: true
@@ -87,4 +90,4 @@ module.exports = {
                 API_URL)
         })
     ]
-};
+}

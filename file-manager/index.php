@@ -24,6 +24,4 @@
 		//test si path est valide
 			//creer le dossier
 	}
-	
-	
 ?>
