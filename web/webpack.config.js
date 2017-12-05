@@ -13,7 +13,7 @@ const path = require('path')
 
 const URL = process.env.NODE_ENV === 'production' ? HOSTNAME : LOCAL_URL
 const PORT = process.env.NODE_ENV === 'production' ? PRODUCTION_PORT : LOCAL_PORT
-const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + HOSTNAME + ':' + API_PORT : 'http://' + URL + ':' + API_PORT
+const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + PRODUCTION_URL + ':' + API_PORT : 'http://' + URL + ':' + API_PORT
 console.log('Deploying Web server to ' + URL + ':' + PORT)
 
 const publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
@@ -29,8 +29,6 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, outputFolder),
         compress: true,
-        disableHostCheck: true,
-        public: HOSTNAME,
         host: URL,
         port: PORT,
         historyApiFallback: true

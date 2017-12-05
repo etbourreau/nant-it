@@ -12,7 +12,7 @@
     "dev:update": "npm i",
     "dev:launch": "webpack-dev-server --open",
     "prod:update": "npm i --production",
-    "prod:launch": "cross-env NODE_ENV=production webpack-dev-server --open"
+    "prod:launch": "cross-env NODE_ENV=production webpack-dev-server --open --public nant-it.fr:80"
   },
   "keywords": [],
   "repository": {
