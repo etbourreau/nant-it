@@ -9,8 +9,7 @@
   "scripts": {
     "prod": "npm run build && node server.js",
     "build": "npm i && webpack --config webpack.prod.js",
-    "dev": "webpack-dev-server --open --config webpack.dev.js",
-    "test": "webpack --config webpack.dev.js && node server.js"
+    "dev": "webpack-dev-server --open --config webpack.dev.js"
   },
   "keywords": [],
   "repository": {

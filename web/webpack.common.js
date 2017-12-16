@@ -15,6 +15,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './app/index.ejs'
+        }),
+        new webpack.DefinePlugin({
+            'API_URL': JSON.stringify(API_URL)
         })
     ],
 
@@ -68,11 +71,6 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/'
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            'API_URL': JSON.stringify(API_URL)
-        })
-    ],
     devServer: {
         contentBase: outputFolder,
         compress: true,
