@@ -7,12 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "npm run dev:update && npm run dev:launch",
-    "start": "npm run prod:update && npm run prod:launch",
-    "dev:update": "npm i",
-    "dev:launch": "webpack-dev-server --open",
-    "prod:update": "npm i --production",
-    "prod:launch": "cross-env NODE_ENV=production webpack-dev-server --open --public nant-it.fr:80"
+    "prod": "npm run build && node server.js",
+    "build": "npm i && webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "test": "webpack --config webpack.dev.js && node server.js"
   },
   "keywords": [],
   "repository": {
@@ -21,25 +19,28 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "cross-env": "^5.0.0",
-    "file-loader": "^0.11.1",
-    "html-loader": "^0.5.1",
+    "angular": "^1.6.4",
     "angular-route": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
-    "bootstrap": "^3.3.7",
-    "jssha": "^2.3.1",
-    "lodash": "^4.17.4",
-    "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
+    "bootstrap": "^3.3.7",
+    "cross-env": "^5.0.0",
     "css-loader": "^0.28.1",
+    "express": "^4.16.2",
+    "file-loader": "^0.11.1",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "jssha": "^2.3.1",
+    "lodash": "^4.17.4",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.17.0",
-    "angular": "^1.6.4"
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.1"
   }
 }

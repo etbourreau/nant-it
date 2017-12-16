@@ -1,3 +1,8 @@
-/db/nbproject/private/
-/db/db.json
+db/nbproject/private/
+db/db.json
 **/node_modules
+web/dist/bundle*
+web/dist/index*
+web/dist/assets/avatar/**
+web/dist/assets/galerie/**
+.idea

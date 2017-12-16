@@ -1,0 +1,8 @@
+{"web": {
+    "LOCAL_URL": "localhost",
+    "LOCAL_PORT": "8002",
+    "PRODUCTION_PORT": "8000",
+    "API_PORT": "3000",
+    "PRODUCTION_URL": "5.135.240.8",
+    "HOSTNAME": "nant-it.fr"
+}}

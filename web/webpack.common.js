@@ -1,40 +1,22 @@
-//CONFIG
-const LOCAL_URL = 'localhost'
-const LOCAL_PORT = '81'
-const PRODUCTION_PORT = '80'
-const API_PORT = '3000'
-const PRODUCTION_URL = '5.135.240.8'
-const HOSTNAME = "nant-it.fr"
-const outputFolder = 'dist'
-
 //DO NOT TOUCH
-const webpack = require('webpack')
 const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const config = require('../config.json').web
 
-const URL = process.env.NODE_ENV === 'production' ? HOSTNAME : LOCAL_URL
-const PORT = process.env.NODE_ENV === 'production' ? PRODUCTION_PORT : LOCAL_PORT
-const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + PRODUCTION_URL + ':' + API_PORT : 'http://' + URL + ':' + API_PORT
-console.log('Deploying Web server to ' + URL + ':' + PORT)
-
-const publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
+//CONFIG
+const outputFolder = 'dist'
+const URL = process.env.NODE_ENV === 'production' ? config.HOSTNAME : config.LOCAL_URL
+const PORT = process.env.NODE_ENV === 'production' ? config.PRODUCTION_PORT : config.LOCAL_PORT
+const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + config.PRODUCTION_URL + ':' + config.API_PORT : 'http://' + URL + ':' + config.API_PORT
 
 module.exports = {
-    entry: "./app",
-    output: {
-        path: path.resolve(__dirname, outputFolder),
-        filename: "bundle.js",
-        publicPath: publicPath
-    },
-
-    devServer: {
-        contentBase: path.join(__dirname, outputFolder),
-        compress: true,
-        host: URL,
-        port: PORT,
-        historyApiFallback: true
-    },
-
-    devtool: 'cheap-module-eval-source-map',
+    entry: "./app/index.js",
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './app/index.ejs'
+        })
+    ],
 
     module: {
         loaders: [
@@ -81,11 +63,21 @@ module.exports = {
             },
         ]
     },
-
+    output: {
+        path: path.resolve(__dirname, outputFolder),
+        filename: 'bundle.js',
+        publicPath: '/'
+    },
     plugins: [
         new webpack.DefinePlugin({
-            'API_URL': JSON.stringify(
-                API_URL)
+            'API_URL': JSON.stringify(API_URL)
         })
-    ]
-}
+    ],
+    devServer: {
+        contentBase: outputFolder,
+        compress: true,
+        host: URL,
+        port: PORT,
+        historyApiFallback: true
+    }
+};

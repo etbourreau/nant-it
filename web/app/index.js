@@ -1,4 +1,3 @@
-
 //Import Basic/Core
     import angular from 'angular'
     import RouteModule from 'angular-route'
