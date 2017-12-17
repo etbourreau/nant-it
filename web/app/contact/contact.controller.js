@@ -16,19 +16,16 @@ export default class ControleurContact {
                 tel: this.tel,
                 societe: this.societe,
                 message: this.message
-            }).then(() =>
-                {
-                    this.success = true
-                    this.resetChamps()
-                }, () =>
-                {
+            }).then(() => {
+                this.success = true
+                this.resetChamps()
+            }, () => {
                     this.error = true
                     this.errorServeur = true
                 })
-            this.timeout(() =>
-                {
-                    this.resetAlerts()
-                },
+            this.timeout(() => {
+                this.resetAlerts()
+            },
                 this.timeAlert)
         }
     }
@@ -83,10 +80,9 @@ export default class ControleurContact {
             this.errorEmptyMessage = true
         }
 
-        this.timeout(() =>
-            {
-                this.resetAlerts()
-            },
+        this.timeout(() => {
+            this.resetAlerts()
+        },
             this.timeAlert)
         return valid
     }

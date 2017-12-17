@@ -4,7 +4,8 @@ import TemplateListerGalerie from './galerie.lister.html'
 
 const ComposantListerGalerie = {
     template: TemplateListerGalerie,
-    controller: ControleurListerGalerie
+    controller: ['$location', 'serviceSession',
+        'serviceGalerie', ControleurListerGalerie]
 };
 
 export default ComposantListerGalerie

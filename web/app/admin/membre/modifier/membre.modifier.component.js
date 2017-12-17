@@ -4,7 +4,8 @@ import TemplateModifierMembre from './membre.modifier.html'
 
 const ComposantModifierMembre = {
     template: TemplateModifierMembre,
-    controller: ControleurModifierMembre
+    controller: ['$location', 'serviceMembre',
+        'serviceGrade', 'serviceSession', 'serviceString', ControleurModifierMembre]
 };
 
 export default ComposantModifierMembre

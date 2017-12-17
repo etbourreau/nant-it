@@ -4,7 +4,8 @@ import TemplateProfil from './profil.html'
 
 const ComposantProfil = {
     template: TemplateProfil,
-    controller: ControleurProfil
+    controller: ['$location', '$timeout', 'jssha', 'serviceSession',
+        'serviceUtilisateur', 'serviceGrade', ControleurProfil]
 };
 
 export default ComposantProfil

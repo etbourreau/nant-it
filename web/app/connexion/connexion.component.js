@@ -3,7 +3,7 @@ import TemplateConnexion from './connexion.html'
 
 const ComposantConnexion = {
     template: TemplateConnexion,
-    controller: ControleurConnexion
+    controller: ['$location', '$timeout', 'serviceSession', 'serviceMenu', ControleurConnexion]
 };
 
 export default ComposantConnexion;

@@ -4,7 +4,7 @@ import TemplateEquipe from './equipe.html'
 
 const ComposantEquipe = {
     template: TemplateEquipe,
-    controller: ControleurEquipe
+    controller: ['serviceUtilisateur', 'serviceGrade', ControleurEquipe]
 };
 
 export default ComposantEquipe

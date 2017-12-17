@@ -4,7 +4,8 @@ import TemplateAjouterGalerie from './galerie.ajouter.html'
 
 const ComposantAjouterGalerie = {
     template: TemplateAjouterGalerie,
-    controller: ControleurAjouterGalerie
+    controller: ['$location', 'serviceGalerie',
+        'serviceSession', 'serviceString', ControleurAjouterGalerie]
 }
 
 export default ComposantAjouterGalerie

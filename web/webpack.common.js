@@ -2,13 +2,13 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const config = require('../config.json').web
+const config = require('../config.json')
 
 //CONFIG
 const outputFolder = 'dist'
-const URL = process.env.NODE_ENV === 'production' ? config.HOSTNAME : config.LOCAL_URL
-const PORT = process.env.NODE_ENV === 'production' ? config.PRODUCTION_PORT : config.LOCAL_PORT
-const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + config.PRODUCTION_URL + ':' + config.API_PORT : 'http://' + URL + ':' + config.API_PORT
+const URL = process.env.NODE_ENV === 'production' ? config.web.HOSTNAME : 'localhost'
+const PORT = process.env.NODE_ENV === 'production' ? config.web.PORT : config.web.LOCAL_PORT
+const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + URL + ':' + config.db.API_PORT : 'http://' + URL + ':' + config.db.LOCAL_PORT
 
 module.exports = {
     entry: "./app/index.js",
@@ -74,8 +74,8 @@ module.exports = {
     devServer: {
         contentBase: outputFolder,
         compress: true,
-        host: URL,
-        port: PORT,
+        host: 'localhost',
+        port: config.web.LOCAL_PORT,
         historyApiFallback: true
     }
 };

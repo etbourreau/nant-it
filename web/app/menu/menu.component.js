@@ -4,7 +4,8 @@ import TemplateMenu from './menu.html'
 
 const ComposantMenu = {
     template: TemplateMenu,
-    controller: ControleurMenu
+    controller: ['$timeout', 'frontUrls', '$location', 'serviceMenu',
+        'serviceSession', 'serviceContact', ControleurMenu]
 };
 
 export default ComposantMenu

@@ -4,7 +4,8 @@ import TemplateAjouterMembre from './membre.ajouter.html'
 
 const ComposantAjouterMembre = {
     template: TemplateAjouterMembre,
-    controller: ControleurAjouterMembre
+    controller: ['$location', 'serviceMembre',
+        'serviceGrade', 'serviceSession', 'serviceString', ControleurAjouterMembre]
 };
 
 export default ComposantAjouterMembre

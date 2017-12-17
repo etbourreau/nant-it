@@ -39,11 +39,10 @@ export default class ControleurAjouterMembre {
                 libelle: this.nouveauGrade.nom,
                 pluriel: pluriel
             })
-                .then((id) =>
-                    {
-                        this.refreshGrades()
-                        this.utilisateur.grade = id
-                    })
+                .then((id) => {
+                    this.refreshGrades()
+                    this.utilisateur.grade = id
+                })
         }
     }
 
@@ -55,14 +54,14 @@ export default class ControleurAjouterMembre {
         } else {
             this.utilisateur.image =
                 this.format.formatAccents(
-                this.utilisateur.prenom.toLowerCase())
+                    this.utilisateur.prenom.toLowerCase())
                 + '-'
                 + this.format.formatAccents(this.utilisateur.nom.toLowerCase())
                 + '.jpg'
 
             this.utilisateur.email =
                 this.format.formatAccents(
-                this.utilisateur.prenom.toLowerCase())
+                    this.utilisateur.prenom.toLowerCase())
                 + '.'
                 + this.format.formatAccents(this.utilisateur.nom.toLowerCase())
                 + '@nant-it.fr'
@@ -71,19 +70,17 @@ export default class ControleurAjouterMembre {
                 this.utilisateur.competences = ''
             }
             this.service.ajouter(this.utilisateur)
-                .then((result) =>
-                    {
-                        if (result.error) {
-                            console.log(result.message)
-                            this.error = true
-                        } else {
-                            this.service.refresh()
-                                .then(() =>
-                                    {
-                                        this.location.path('/admin-membres')
-                                    })
-                        }
-                    })
+                .then((result) => {
+                    if (result.error) {
+                        console.log(result.message)
+                        this.error = true
+                    } else {
+                        this.service.refresh()
+                            .then(() => {
+                                this.location.path('/admin-membres')
+                            })
+                    }
+                })
         }
     }
 

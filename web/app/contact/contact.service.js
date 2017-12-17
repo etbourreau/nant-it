@@ -6,8 +6,7 @@ export default class ServiceContact {
 
     refresh() {
         return this.http.get(this.url)
-            .then(result =>
-            {
+            .then(result => {
                 if (result.data) {
                     this.messages = result.data
                 } else {
@@ -15,8 +14,7 @@ export default class ServiceContact {
                         'aucune donnée récupérée')
                 }
                 return true
-            }, () =>
-            {
+            }, () => {
                 console.log('ServiceContact-refresh:',
                     'connexion au serveur échouée')
                 return false
@@ -31,8 +29,7 @@ export default class ServiceContact {
     getNonLus() {
         let nb = 0;
         if (this.messages) {
-            this.messages.forEach(msg =>
-            {
+            this.messages.forEach(msg => {
                 if (msg.nouveau) {
                     nb++
                 }
@@ -50,8 +47,7 @@ export default class ServiceContact {
 
     findIdSuivant() {
         let id = 0
-        this.messages.forEach(msg =>
-        {
+        this.messages.forEach(msg => {
             if (msg.id > id) {
                 id = msg.id
             }
@@ -61,8 +57,7 @@ export default class ServiceContact {
 
     setTousLus() {
         if (this.messages) {
-            this.messages.forEach(msg =>
-            {
+            this.messages.forEach(msg => {
                 if (msg.nouveau) {
                     msg.nouveau = false
                     this.http.put(this.url + '/' + msg.id, msg)
@@ -72,3 +67,5 @@ export default class ServiceContact {
 
     }
 }
+
+ServiceContact.$inject = ['$http', 'apiUrls']

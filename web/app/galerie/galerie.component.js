@@ -4,7 +4,7 @@ import TemplateGalerie from './galerie.html'
 
 const ComposantGalerie = {
     template: TemplateGalerie,
-    controller: ControleurGalerie
+    controller: ['serviceGalerie', ControleurGalerie]
 };
 
 export default ComposantGalerie

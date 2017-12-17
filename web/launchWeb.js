@@ -3,4 +3,6 @@ const express = require('express')
 const app = express()
 
 app.use(express.static('dist'))
-app.listen(config.PRODUCTION_PORT, () => console.log('listening...'))
+app.listen(config.PORT, () => {
+    console.log("Nant'IT WebServer started...")
+})

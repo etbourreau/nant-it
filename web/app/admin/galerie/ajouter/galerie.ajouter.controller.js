@@ -23,19 +23,17 @@ export default class ControleurAjouterMembre {
             }
             this.item.image += '.jpg'
             this.service.saveItem(this.item)
-                .then((result) =>
-                    {
-                        if (result.error) {
-                            console.log(result.message)
-                            this.error = true
-                        } else {
-                            this.service.refresh()
-                                .then(() =>
-                                    {
-                                        this.location.path('/admin-galerie')
-                                    })
-                        }
-                    })
+                .then((result) => {
+                    if (result.error) {
+                        console.log(result.message)
+                        this.error = true
+                    } else {
+                        this.service.refresh()
+                            .then(() => {
+                                this.location.path('/admin-galerie')
+                            })
+                    }
+                })
         }
     }
 

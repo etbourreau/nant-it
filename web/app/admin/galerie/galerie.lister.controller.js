@@ -13,10 +13,9 @@ export default class ControleurListerGalerie {
 
     refreshView() {
         this.service.refresh()
-            .then(() =>
-                {
-                    this.items = this.service.findAll()
-                })
+            .then(() => {
+                this.items = this.service.findAll()
+            })
     }
 
     ajouter() {
@@ -31,14 +30,12 @@ export default class ControleurListerGalerie {
         this.errorSuppression = false
         if (confirm("Êtes-vous sûr de vouloir supprimer cet élément?")) {
             this.service.supprimerItem(id)
-                .then(result =>
-                {
+                .then(result => {
                     if (result && result.status == 200) {
                         this.service.refresh()
-                            .then(() =>
-                                {
-                                    this.refreshView()
-                                })
+                            .then(() => {
+                                this.refreshView()
+                            })
 
                     } else {
                         this.errorSuppression = true
@@ -48,5 +45,4 @@ export default class ControleurListerGalerie {
     }
 }
 
-ControleurListerGalerie.$inject = ['$location', 'serviceSession',
-    'serviceGalerie']
+ControleurListerGalerie.$inject = ['$location', 'serviceSession', 'serviceGalerie']

@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "npm i && json-server db.json -p 3000",
-        "dev": "npm i && json-server db.json -p 3000"
+        "start": "npm i && node launchDB.js",
+        "dev": "npm i && node launchDBDev.js"
     },
     "author": "",
     "license": "ISC",

@@ -3,7 +3,7 @@ import TemplateMessages from './messages.html'
 
 const ComposantMessages = {
     template: TemplateMessages,
-    controller: ControleurMessages
+    controller: ['$location', 'serviceSession', 'serviceContact', ControleurMessages]
 };
 
 export default ComposantMessages

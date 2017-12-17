@@ -10,19 +10,17 @@ export default class ServiceGalerie {
 
     refresh() {
         return this.http.get(this.url)
-            .then(result =>
-                {
-                    if (result.data) {
-                        this.galerie = result.data
-                    } else {
-                        console.log('ServiceGalerie-refresh:',
-                            'aucune donnée récupérée')
-                    }
-                }, () =>
-                {
+            .then(result => {
+                if (result.data) {
+                    this.galerie = result.data
+                } else {
                     console.log('ServiceGalerie-refresh:',
-                        'connexion au serveur échouée')
-                })
+                        'aucune donnée récupérée')
+                }
+            }, () => {
+                console.log('ServiceGalerie-refresh:',
+                    'connexion au serveur échouée')
+            })
     }
 
     findAll() {
@@ -31,25 +29,24 @@ export default class ServiceGalerie {
 
     findItemParId(id) {
         let item = this.galerie.find(u => u.id == id)
-        return (item)?JSON.parse(JSON.stringify(item)):null
+        return (item) ? JSON.parse(JSON.stringify(item)) : null
     }
 
     findIdSuivant() {
         let id = 0
-        this.galerie.forEach(i =>
-            {
-                if (i.id > id) {
-                    id = i.id
-                }
-            })
+        this.galerie.forEach(i => {
+            if (i.id > id) {
+                id = i.id
+            }
+        })
         return (parseInt(id) + 1)
     }
-    
-    preparerModification(id){
+
+    preparerModification(id) {
         this.modif = JSON.parse(JSON.stringify(this.findItemParId(id)))
-        if(this.modif){
+        if (this.modif) {
             this.location.path('/admin-galerie-modifier')
-        }else{
+        } else {
             console.log('serviceGalerie-preparerModification', 'utilisateur inconnu')
         }
     }
@@ -61,7 +58,7 @@ export default class ServiceGalerie {
                 for (let k in item) {
                     i[k] = item[k]
                 }
-                return this.http.put(this.url+'/'+i.id, i)
+                return this.http.put(this.url + '/' + i.id, i)
             } else {
                 return new Promise(resolve =>
                     resolve({
@@ -76,8 +73,10 @@ export default class ServiceGalerie {
         }
         this.refresh()
     }
-    
-    supprimerItem(id){
-        return this.http.delete(this.url+'/'+id)
+
+    supprimerItem(id) {
+        return this.http.delete(this.url + '/' + id)
     }
 }
+
+ServiceGalerie.$inject = ['$http', '$location', 'apiUrls']

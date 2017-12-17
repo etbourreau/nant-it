@@ -20,17 +20,17 @@ export default class ServiceMenu {
                     temps: 200
                 }
             },
-            nav : {
+            nav: {
                 marginTop: {
-                    min : '0px',
+                    min: '0px',
                     max: '40vh',
                     temps: 350
                 }
             },
-            page : {
+            page: {
                 transform: {
                     min: 'scale(0, 0)',
-                    max : 'scale(1, 1)',
+                    max: 'scale(1, 1)',
                     temps: 750
                 },
                 minHeight: {
@@ -46,43 +46,43 @@ export default class ServiceMenu {
         this.setTransitions(true)
         this.contact = serviceContact
     }
-    
-    getTempsTransition(){
+
+    getTempsTransition() {
         return this.limites.logo.marginLeft.temps + this.limites.nav.marginTop.temps + this.limites.page.transform.temps
     }
-    
-    setLogo(type){
-        if(type == 'horizontal'){
-            document.getElementById('logo-'+type).style.opacity = 1
+
+    setLogo(type) {
+        if (type == 'horizontal') {
+            document.getElementById('logo-' + type).style.opacity = 1
             document.getElementById('logo-vertical').style.opacity = 0
         }
-        if(type == 'vertical'){
-            document.getElementById('logo-'+type).style.opacity = 1
+        if (type == 'vertical') {
+            document.getElementById('logo-' + type).style.opacity = 1
             document.getElementById('logo-horizontal').style.opacity = 0
         }
     }
-    
-    setTransitions(state){
+
+    setTransitions(state) {
         document.getElementById('flags').style.transition =
-            (state)? 'opacity ' + this.limites.flags.opacity.temps + 'ms ease-in-out' : 'unset'
+            (state) ? 'opacity ' + this.limites.flags.opacity.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('logo-horizontal').style.transition =
-            (state)? 'opacity ' + this.limites.logo.marginLeft.temps + 'ms ease-in-out' : 'unset'
+            (state) ? 'opacity ' + this.limites.logo.marginLeft.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('logo-vertical').style.transition =
-            (state)? 'opacity ' + this.limites.logo.marginLeft.temps + 'ms ease-in-out' : 'unset'
+            (state) ? 'opacity ' + this.limites.logo.marginLeft.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('logo').style.transition =
-            (state)? 'max-width ' + this.limites.nav.marginTop.temps + 'ms ease-in-out,'+
-            'margin-left ' + this.limites.nav.marginTop.temps + 'ms ease-in-out' : 'unset'
+            (state) ? 'max-width ' + this.limites.nav.marginTop.temps + 'ms ease-in-out,' +
+                'margin-left ' + this.limites.nav.marginTop.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('menu').style.transition =
-            (state)? 'margin-top ' + this.limites.nav.marginTop.temps + 'ms ease-in-out' : 'unset'
+            (state) ? 'margin-top ' + this.limites.nav.marginTop.temps + 'ms ease-in-out' : 'unset'
         document.getElementById('pageContenu').style.transition =
-            (state)? 'transform ' + this.limites.page.transform.temps + 'ms ease-in-out' : 'unset'
+            (state) ? 'transform ' + this.limites.page.transform.temps + 'ms ease-in-out' : 'unset'
     }
 
     setPageContenu(state) {
         document.getElementById('flags').style.opacity =
             (state) ? this.limites.flags.opacity.min : this.limites.flags.opacity.max
         document.getElementById('flags').style.display = (state) ? 'none' : 'flex'
-        this.setLogo((state)? 'vertical': 'horizontal')
+        this.setLogo((state) ? 'vertical' : 'horizontal')
         document.getElementById('logo').style.maxWidth =
             (state) ? this.limites.logo.maxWidth.min : this.limites.logo.maxWidth.max
         document.getElementById('logo').style.marginLeft =
@@ -108,8 +108,7 @@ export default class ServiceMenu {
                 this.setLogo('vertical')
                 //monter menu
                 document.getElementById('menu').style.marginTop = this.limites.nav.marginTop.min
-                this.timeout(() =>
-                {
+                this.timeout(() => {
                     //afficher la page
                     document.getElementById('pageContenu').style.minHeight = this.limites.page.minHeight.max
                     document.getElementById('pageContenu').style.maxHeight = this.limites.page.maxHeight.max
@@ -119,8 +118,7 @@ export default class ServiceMenu {
         } else {
             //reduire la page
             document.getElementById('pageContenu').style.transform = this.limites.page.transform.min
-            this.timeout(() =>
-            {
+            this.timeout(() => {
                 //ajouter flags
                 document.getElementById('flags').style.display = 'flex'
                 document.getElementById('pageContenu').style.maxHeight = this.limites.page.maxHeight.min
@@ -135,7 +133,7 @@ export default class ServiceMenu {
                     document.getElementById('logo').style.maxWidth = this.limites.logo.maxWidth.max
                     document.getElementById('logo').style.marginLeft = this.limites.logo.marginLeft.max
                 }, this.limites.nav.marginTop.temps)
-                
+
             }, this.limites.page.transform.temps)
         }
     }
@@ -158,11 +156,13 @@ export default class ServiceMenu {
         }
 
     }
-    
-    getMessagesNonLus(){
+
+    getMessagesNonLus() {
         return this.contact.refresh()
             .then(() => {
                 return this.contact.getNonLus()
             })
     }
 }
+
+ServiceMenu.$inject = ['$timeout', 'serviceContact']

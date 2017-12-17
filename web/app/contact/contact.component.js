@@ -3,7 +3,7 @@ import TemplateContact from './contact.html'
 
 const ComposantContact = {
     template: TemplateContact,
-    controller: ControleurContact
+    controller: ['$timeout', 'serviceContact', ControleurContact]
 };
 
 export default ComposantContact;

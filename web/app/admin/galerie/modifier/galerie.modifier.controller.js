@@ -25,15 +25,13 @@ export default class ControleurModifierMembre {
                 this.item.image = this.item.image.replace(' ', '-')
             }
             this.service.saveItem(this.item)
-                .then((result) =>
-                {
+                .then((result) => {
                     if (result.error) {
                         console.log(result.message)
                         this.error = true
                     } else {
                         this.service.refresh()
-                            .then(() =>
-                            {
+                            .then(() => {
                                 this.location.path('/admin-galerie')
                             })
                     }

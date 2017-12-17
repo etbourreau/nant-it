@@ -17,13 +17,11 @@ export default class ControleurProfil {
 
     refreshInformations() {
         this.service.refresh()
-            .then(() =>
-            {
+            .then(() => {
                 this.utilisateur = this.service.findUtilisateurParId(
                     this.session.getId())
                 this.grades.refresh()
-                    .then(() =>
-                    {
+                    .then(() => {
                         this.utilisateur.grade = this.grades.getGradeParId(
                             this.utilisateur.grade).libelle
                     })
@@ -55,21 +53,18 @@ export default class ControleurProfil {
             utilisateur.description = this.utilisateur.description
             utilisateur.competences = this.utilisateur.competences
             this.service.saveUtilisateur(utilisateur)
-                .then(result =>
-                {
+                .then(result => {
                     if (result.error) {
                         this.errorFormInformationsUtilisateurInconnu = true
                     } else {
                         this.successFormInformations = true
                     }
-                }, () =>
-                {
+                }, () => {
                     this.errorFormInformationsModifier = true
                 })
         }
 
-        this.timeout(() =>
-        {
+        this.timeout(() => {
             this.resetInformationsAlerts()
         }, this.timeAlert)
     }
@@ -162,23 +157,19 @@ export default class ControleurProfil {
             this.successPwd = true
             this.disablePwdButton = true
             this.service.saveUtilisateur(utilisateur)
-                .then(() =>
-                {
+                .then(() => {
                     this.service.refresh()
-                        .then(() =>
-                        {
+                        .then(() => {
                             this.disablePwdButton = false
                         })
                     this.emptyPwdChamps()
-                }, () =>
-                {
+                }, () => {
                     this.errorPwdSave = true
                 })
         }
 
         //reset alerts
-        this.timeout(() =>
-        {
+        this.timeout(() => {
             this.resetPwdAlerts()
         }, this.timeAlert)
     }

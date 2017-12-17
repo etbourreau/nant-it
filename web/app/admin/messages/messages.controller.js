@@ -13,16 +13,14 @@ export default class ControleurMessages {
 
     refresh() {
         this.service.refresh()
-            .then(() =>
-                {
-                    this.messages = this.service.findAll()
-                    this.messages.forEach(msg =>
-                        {
-                            msg.date = msg.date.split(
-                                'T')[0] + ' ' + msg.date.split('T')[1].split(
-                                '.')[0]
-                        })
+            .then(() => {
+                this.messages = this.service.findAll()
+                this.messages.forEach(msg => {
+                    msg.date = msg.date.split(
+                        'T')[0] + ' ' + msg.date.split('T')[1].split(
+                            '.')[0]
                 })
+            })
 
     }
 }

@@ -4,7 +4,8 @@ import TemplateListerMembre from './membre.lister.html'
 
 const ComposantListerMembre = {
     template: TemplateListerMembre,
-    controller: ControleurListerMembre
+    controller: ['$location', 'serviceSession',
+        'serviceMembre', 'serviceGrade', ControleurListerMembre]
 };
 
 export default ComposantListerMembre

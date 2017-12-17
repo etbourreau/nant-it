@@ -4,7 +4,8 @@ import TemplateModifierGalerie from './galerie.modifier.html'
 
 const ComposantModifierGalerie = {
     template: TemplateModifierGalerie,
-    controller: ControleurModifierGalerie
+    controller: ['$location', 'serviceGalerie',
+        'serviceSession', ControleurModifierGalerie]
 };
 
 export default ComposantModifierGalerie
