@@ -8,7 +8,7 @@ const config = require('../config.json')
 const outputFolder = 'dist'
 const URL = process.env.NODE_ENV === 'production' ? config.web.HOSTNAME : 'localhost'
 const PORT = process.env.NODE_ENV === 'production' ? config.web.PORT : config.web.LOCAL_PORT
-const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + URL + ':' + config.db.API_PORT : 'http://' + URL + ':' + config.db.LOCAL_PORT
+const API_URL = process.env.NODE_ENV === 'production' ? 'http://' + URL + ':' + config.db.PORT : 'http://' + URL + ':' + config.db.LOCAL_PORT
 
 module.exports = {
     entry: "./app/index.js",
