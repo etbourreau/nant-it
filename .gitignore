@@ -1,8 +1,12 @@
 db/nbproject/private/
 db/db.json
 **/node_modules
-web/dist/bundle*
-web/dist/index*
+web/dist/*.js
+web/dist/*.js.map
+web/dist/*.html
+web/dist/fonts/
+web/dist/public/
 web/dist/assets/avatar/**
 web/dist/assets/galerie/**
-.idea
+.idea/
+npm-debug.log
